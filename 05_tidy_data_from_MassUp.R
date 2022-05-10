@@ -70,7 +70,8 @@ tidy_data <- peak_table %>%
 colnames(tidy_data) <- file_names$Filename
   
 #import treatment list
-treatments <- read.csv("MALDI_data/treatments.csv")
+treatments <- read.csv("MALDI_data/treatments.csv") %>%
+  mutate(Filetext = as.character(Filetext))
 treat_names <- tibble(treats = colnames(treatments)) %>%
   filter(treats != "Filetext")
 
@@ -84,7 +85,8 @@ tidy_data <- temp %>%
   select(-`0.1`) %>%
   add_column((file_names %>% filter(Filename != "mz")), .before = TRUE)
 
-metadata <- sample_list %>%
+metadata <- tidy_data %>% select(Filename) %>%
+  left_join(sample_list) %>% 
   left_join(treatments) %>%
   select(Filename, Filetext, treat_names$treats) %>%
   distinct()
@@ -95,9 +97,29 @@ data_for_SIMCA <- tidy_data %>%
   select(Sample, treat_names$treats, any_of(as.character(peak_table$mz))) %>%
   mutate(Sample = str_replace_all(Sample, " ", "_"))
 
-write_csv(data_for_SIMCA, "Tidy_data/MALDI_Data_for_SIMCA.csv")
+data_for_metaboanalyst_1 <- tidy_data %>%
+  left_join(metadata) %>%
+  rename("Sample" = Filetext) %>%
+  select(Sample, treat_names$treats[1], any_of(as.character(peak_table$mz))) %>%
+  mutate(Sample = str_replace_all(Sample, " ", "_"))
 
-return(paste("MALDI peak table suitable for SIMCA saved to Tidy_data/MALDI_Data_for_SIMCA.csv, also suitable for Metaboanalyst if you only have one treatment(factor)"))
+data_for_metaboanalyst_2 <- tidy_data %>%
+  left_join(metadata) %>%
+  rename("Sample" = Filetext) %>%
+  select(Sample, any_of(as.character(peak_table$mz))) %>%
+  mutate(Sample = str_replace_all(Sample, " ", "_"))
+
+metadata_for_metabolanalyst2 <- metadata %>%
+  select(-Filename) %>%
+  rename("Sample" = Filetext)
+
+
+write_csv(data_for_SIMCA, "Tidy_data/MALDI_Data_for_SIMCA.csv")
+write_csv(data_for_metaboanalyst_1, "Tidy_data/MALDI_Data_for_metaboanalyst_1factor.csv")
+write_csv(data_for_metaboanalyst_2, "Tidy_data/MALDI_Data_for_metaboanalyst_2factor.csv")
+write_csv(metadata_for_metabolanalyst2, "Tidy_data/MALDI_metadata_for_metaboanalyst.csv")
+
+return(paste("MALDI peak tables suitable for SIMCA + metaboanalyst saved to Tidy_data/MALDI_Data_for_SIMCA.csv"))
 
 }
 
