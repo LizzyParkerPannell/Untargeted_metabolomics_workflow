@@ -121,12 +121,11 @@ draw_scores_plot <- function(PC_x, PC_y, colour_class, shape_class){
   
   new_sl_raw$extra_class <- new_sl_raw[,ncol(new_sl_raw)]
   
-<<<<<<< HEAD
   data_for_graph <- new_sl_raw  %>%
     filter(str_detect(extra_class, "NA") != TRUE)
-=======
+
   data_for_graph <- new_sl_raw
->>>>>>> 3903d29da41a9661eaec38e7d8baf246040168f1
+
   
   raw.sum <- results_for_PCA_graphs[[1]] %>%
     rownames_to_column()
@@ -168,12 +167,10 @@ draw_scores_plot <- function(PC_x, PC_y, colour_class, shape_class){
 # If you only have one class (treatment group) then you still need to define both colour_class and shape_class but they can be the sames
 scores_plot <- draw_scores_plot(PC_x = "PC1",
                              PC_y = "PC2",
-<<<<<<< HEAD
                              colour_class = "Treat",
                              shape_class = "Treat")
 
 scores_plot
-=======
-                             colour_class = "Time",
-                             shape_class = "Drought")
->>>>>>> 3903d29da41a9661eaec38e7d8baf246040168f1
+
+ 
+
