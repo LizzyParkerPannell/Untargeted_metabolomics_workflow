@@ -12,7 +12,7 @@
 # OR you will need a metadata file with "Sample" as the first column followed by you treatments (classes/ grouping information) in separate columns
 
 # Load required packages
-packages_to_load <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "muma")
+packages_to_load <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "muma", "forcats")
 lapply(packages_to_load, require, character.only = TRUE)  
 
 # Don't forget to cite these packages in your thesis/ manuscript (this code will automatically make a table of text citations for you)
@@ -172,5 +172,115 @@ scores_plot <- draw_scores_plot(PC_x = "PC1",
 
 scores_plot
 
- 
+# If you have some clustering/ separation between your classes then you can use directed analysis to pull out the features (mz__rt or mz bin)
+# that have the biggest, most reliable effect on the OPLS-DA model ...
+
+# muma package will do an OPLS-DA
+
+### the next bit gets the peak_table (the mz values for each sample)
+# into the format that muma package wants
+# so needs Samples (4-5 characters, unique) and then Class (integers)
+# as the first 2 columns and then all the mz slices as variables
+
+# useful for PCA and OPLSDA theory https://metabolomics.se/Courses/MVA/MVA%20in%20Omics_Handouts_Exercises_Solutions_Thu-Fri.pdf
+
+# if you want to do OPLS-DA you have to run muma with the original 
+# data file recoded so that Class only contains "1" or "2"
+
+
+# This function will filter the data by the two classes you're interested in, recode them the way muma wants, and recode your
+# sample names if they are too long (>5. Don't worry, it will save a file with a key to the new sample names if that's the case)
+tidy_for_muma <- function(metadata_class, class_1, class_2){
+  
+  temp_data <- peak_table %>%
+    column_to_rownames(var = "Sample")
+  
+  temp1 <- metadata %>%
+    select(Sample, as.factor(metadata_class)) 
+  
+  temp <- temp1 %>%
+    filter(!is.na(metadata_class)) %>%
+    mutate(old_class = get(names(temp1)[2])) %>%
+    mutate(old_class = as.factor(old_class)) 
+  
+  new_class <- tibble(old_class = levels(temp$old_class)) %>%
+    mutate(Class = case_when(
+      old_class == class_1 ~ "1",
+      old_class == class_2 ~ "2",
+      old_class != class_1 & old_class != class_2 ~ "NA"
+    ))
+  
+  class_info <- temp %>%
+    left_join(new_class) %>%
+    select(Sample, Class) %>%
+    mutate(unique_sample = paste("S", 1:length(Sample), sep = ""))
+  
+  muma_data <- peak_table %>%
+    left_join(class_info) %>%
+    filter(Class != "NA") %>%
+    select(Sample, unique_sample, Class, any_of(colnames(temp_data))) %>%
+    mutate(Sample = case_when(
+      str_length(Sample) <= 5     ~ Sample,
+      str_length(Sample) >= 6     ~ unique_sample
+    )) 
+  
+  # save the data frame for use in the next step
+  write_csv(muma_data %>%
+              select(-unique_sample), 
+            "muma_undirected_directed_analysis/data_for_muma.csv")
+  
+  test_sample <- str_length(peak_table[1,1])
+  
+  #add output of the samples and unique samples for reference
+  if (test_sample >= 6) {
+    
+    write_csv(muma_data %>% 
+                select(Sample, unique_sample), 
+              "muma_undirected_directed_analysis/recoded_sample_names.csv")
+    paste("Sample names were changed, see muma_undirected_directed_analysis/recoded_sample_names.csv for the new sample names") # if true, write the file
+    
+  } else {
+    
+    paste("Sample names were not changed")
+  
+    }
+  
+  
+  return(paste("The data frame for muma has been saved as muma_undirected_directed_analysis/data_for_muma.csv"))
+  
+}
+
+# Run the function for the class and levels of that class that you are interested in
+tidy_for_muma(metadata_class = "Time",
+              class_1 = "T1",
+              class_2 = "T3")
+
+
+
+# so now the data is in the right format, we let muma do all the hard work:
+
+# for details/ help see
+# ?muma
+# or documentation https://rdrr.io/cran/muma/
+
+#here we will use pareto scaling but it is worth exploring whether that is the best scaling for your data
+# you will also need to adjust imputation and imput if you have MALDI data (likely to have a lot of missing values)
+explore.data(file="muma_undirected_directed_analysis/data_for_muma.csv", scaling="pareto",
+             scal=TRUE, normalize=TRUE, imputation=FALSE,
+             imput="ImputType")
+
+# the muma package saves all the output of the analysis to "muma_undirected_directed_analysis/"
+Plot.pca(pcx=1, pcy=2, scaling="pareto", test.outlier=TRUE)
+#repeat for any combination of PCs - muma will paste the best combinations in R
+
+# now get muma to run the oplsda - you must specify the same type of scaling as in the PCA
+oplsda(scaling="pareto")
+
+
+
+# now these graphs are fine but you might want nicer outputs for thesis/ publication/ presentation
+# so the following code accesses the scores, loadings, p and t values etc from the muma output and gets them in a format you can
+# use to make ggplots
+
+
 
