@@ -34,7 +34,7 @@ cite_packages
 
 # This function contains code to find the diffreport file from the xcms results and then tidy it 
 #ready for metaboanalyst or SIMCA (or further analysis in R)
-# First you need to load the function by runnin this piece of code:
+# First you need to load the function by running this piece of code:
 tidy_xcms_online_peak_table <-function(folder, prefix){
 
 path <- paste("Data/", folder, "/results", sep = "")
@@ -115,7 +115,7 @@ metadata_for_metabolanalyst2 <- metadata %>%
 
 write_csv(data_for_metaboanalyst_1, "Tidy_data/XCMS_Data_for_metaboanalyst_1factor.csv")
 write_csv(data_for_metaboanalyst_2, "Tidy_data/XCMS_Data_for_metaboanalyst_2factor.csv")
-write_csv(metadata_for_metabolanalyst2, "Tidy_data/XCMS_metadata_for_metaboanalyt.csv")
+write_csv(metadata_for_metabolanalyst2, "Tidy_data/XCMS_metadata_for_metaboanalyst.csv")
 
 return(paste("Peak intensity tables suitable for SIMCA + metaboanalyst saved as .csv to Untargeted_metabolomics_workflow/Tidy_data"))
 

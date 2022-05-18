@@ -59,6 +59,8 @@ for(i in 1:length(files_to_import$Filename)){
   
 }
 
+
+
 # clean up column names so that they are the file not the whole path
 file_names <- tibble(Filename = colnames(peak_table)) %>%
   transmute(Filename = str_replace(Filename, "MALDI_data/", "")) %>%

@@ -73,15 +73,16 @@ if_else(
 
 data_for_SIMCA <- tidy_data %>%
   left_join(sample_list %>% select(Filename, Filetext)) %>% 
-  select(Filename, Filetext, any_of(as.character(macro_TIC$mz_bin)))
+  select(Filename, Filetext, any_of(as.character(macro_TIC$mz_bin))) %>%
+  rename("Sample" = Filename)
 
-write_csv(data_for_SIMCA, "Tidy_data/Macro_data_for_SIMCA.csv")
+write_csv(data_for_SIMCA, "Tidy_data/Macro_Data_for_SIMCA.csv")
 
 data_for_metaboanalyst_1 <- tidy_data %>%
   left_join(metadata %>% rename("Sample" = Filetext)) %>%
   select(Sample, treat_names$treats[1], any_of(as.character(macro_TIC$mz_bin)))
 
-write_csv(data_for_metaboanalyst_1, "Tidy_data/Macro_data_for_metaboanalyst_1factor.csv")
+write_csv(data_for_metaboanalyst_1, "Tidy_data/Macro_Data_for_metaboanalyst_1factor.csv")
 
 data_for_metaboanalyst2 <- tidy_data %>%
   left_join(metadata %>% rename("Sample" = Filetext)) %>%
@@ -91,7 +92,7 @@ metadata_for_metabolanalyst2 <- metadata %>%
   select(Filetext, treat_names$treats) %>%
   rename("Sample" = Filetext)
 
-write_csv(data_for_metaboanalyst2, "Tidy_data/Macro_data_for_metaboanalyst_2factor.csv")
+write_csv(data_for_metaboanalyst2, "Tidy_data/Macro_Data_for_metaboanalyst_2factor.csv")
 write_csv(metadata_for_metabolanalyst2, "Tidy_data/Metadata_for_metaboanalyst_2factor.csv")
 
 

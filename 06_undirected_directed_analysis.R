@@ -272,6 +272,8 @@ explore.data(file="muma_undirected_directed_analysis/data_for_muma.csv", scaling
 # the muma package saves all the output of the analysis to "muma_undirected_directed_analysis/"
 Plot.pca(pcx=1, pcy=2, scaling="pareto", test.outlier=TRUE)
 #repeat for any combination of PCs - muma will paste the best combinations in R
+# you may get the following error but it doesn't seem to cause a problem (I generally ignore)
+# Error in dist1[, 1] : argument "i" is missing, with no default
 
 # now get muma to run the oplsda - you must specify the same type of scaling as in the PCA
 oplsda(scaling="pareto")
@@ -282,5 +284,87 @@ oplsda(scaling="pareto")
 # so the following code accesses the scores, loadings, p and t values etc from the muma output and gets them in a format you can
 # use to make ggplots
 
+nicer_graphs_and_discriminating_variables <- function(pcorr1_min, pcorr1_max, p_top_n){
+
+  oplsda_pcorr1 <- read.csv("OPLS-DApareto/pcorr1_Matrix.csv") %>%
+    dplyr::rename(pcorr1=V1)
+  oplsda_p1_Matrix <- read.csv("OPLS-DApareto/p1_Matrix.csv") %>%
+    dplyr::rename(p1=V1)
+  loadings_column <- left_join(oplsda_p1_Matrix, oplsda_pcorr1, by="X")
+  
+  loadings_matrix <- read.csv("OPLS-DApareto/PCA_OPLS/PCA_OPLS_LoadingsMatrix.csv")
+  
+  variables <- loadings_matrix %>%
+    pull(X)
+  
+  loadings_column <- loadings_column %>%
+    add_column(variables) %>%
+    select(-X) %>%
+    mutate(mz=str_sub(variables, 2, 9))
+  
+  # Here you may want to change the level of pcorr1 you filter out - take a look at the S plot for an idea of the magnitude of effect
+  # You will also need to look at your S plot to see which loadings are associating with which class
+  top <- loadings_column %>%
+    arrange(desc(p1)) %>%
+    slice(1:p_top_n) %>%
+    filter(pcorr1 > pcorr1_min) # change this depending on your S plot
+  
+  bottom <- loadings_column %>%
+    arrange(p1) %>%
+    slice(1:p_top_n) %>%
+    filter(pcorr1 < pcorr1_max) # change this depending on your S plot
+  
+  # table of variables (mz or mz__rt) of interest to get putative ids for
+  discriminating_variables <- bind_rows(top, bottom, .id="id") %>%
+    dplyr::rename(association=id)
+  
+  write.csv(discriminating_variables, "OPLS-DApareto/OPLSDA_discriminating_variables.csv")
+  
+  pca_theme<- theme_bw() +
+    theme(axis.text.x=element_text(hjust=0.5, vjust=0.5, size=12), 
+          axis.text.y=element_text(size=12),
+          axis.title.x=element_text(size=12),
+          axis.title.y=element_text(size=12),
+          legend.title=element_text(size=12),
+          legend.background=element_blank(),
+          legend.key=element_blank(), 
+          plot.background = element_blank(), 
+          panel.grid.major = element_line(colour = NA), 
+          panel.grid.minor = element_line(colour = NA), 
+          panel.background = element_rect(fill = "white"),
+          panel.border = element_blank(), axis.line = element_line())
+  
+  p_x_limits <- c((min(loadings_column$p1) * 1.2 ), (max(loadings_column$p1) * 1.2 ))
+  p_top_n_limits <- min(top$p1)
+  p_bottom_n_limits <- max(bottom$p1)
+  
+  new_S_plot <- ggplot(loadings_column, aes(x=p1, y=pcorr1)) +
+    geom_point() +
+    pca_theme +
+    scale_x_continuous(limits=c(p_x_limits), expand=c(0,0)) +
+    scale_y_continuous(limits=c(-1, 1.1), expand=c(0,0)) +
+    #geom_text(aes(label=mz, x=p1, y=(jitter((pcorr1 + 0.05), factor=1, amount=NULL)))) +
+    geom_rect(aes(xmin=p_top_n_limits, xmax=p_x_limits[2], ymin=pcorr1_min, ymax=1), fill="tomato", alpha=0.005) +
+    geom_rect(aes(xmin=p_x_limits[1], xmax=p_bottom_n_limits, ymin=pcorr1_max, ymax=-1), fill="tomato", alpha=0.005)
+  
+  new_S_plot
+  
+  
+  ggsave("OPLS-DApareto/ggplot_OPLSDA_S-plot.png", new_S_plot, "png")
+  
+  return(paste("S plot and discriminating variables table saved to OPLS-DApareto/ggplot_OPLSDA_S-plot.png and OPLS-DApareto/OPLSDA_discriminating_variables.csv"))
+  
+}
 
 
+# Here you need to tell the function the following:
+# p_top_n -> How many variables do you want the function to look at associated with each class (you may get fewer returned if they had low reliability in
+# the model but it will start with the number you give it)
+# p_corr1_min -> this is the minimum positive value of ~reliability in the model for the bottom end of the list of discriminating variables
+# i.e. (how strict do you want to be, look at pcorr1 on S plot)
+# p_corr1_max -> this is the maximum negative value of ~reliability for the bottom end of the list of discriminating variables
+# These values will be slightly different in every analysis - you really do need to look at the data and think about what you want to know
+nicer_graphs_and_discriminating_variables(pcorr1_min = 0.4,
+                                          pcorr1_max = -0.4,
+                                          p_top_n = 20
+                                          )
