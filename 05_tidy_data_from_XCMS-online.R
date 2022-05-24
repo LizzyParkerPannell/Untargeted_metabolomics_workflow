@@ -35,7 +35,7 @@ cite_packages
 # This function contains code to find the diffreport file from the xcms results and then tidy it 
 #ready for metaboanalyst or SIMCA (or further analysis in R)
 # First you need to load the function by running this piece of code:
-tidy_xcms_online_peak_table <-function(folder, prefix){
+tidy_xcms_online_peak_table <-function(folder, prefix, main_treatment){
 
 path <- paste("Data/", folder, "/results", sep = "")
   
@@ -62,6 +62,7 @@ samples <- c("Feature", sample_cols$col_names)
 
 tidy_data <- as.tibble(t(temp)) %>%
   add_column(Filename = samples, .before = TRUE) %>%
+  mutate(Filename = str_replace_all(Filename, "-", "_")) %>%
   filter(Filename != "Feature")
 colnames(tidy_data) <- Features
 
@@ -71,7 +72,7 @@ sample_list <- read_csv("Data/samplelist.csv") %>%
 
 treatment_list <- read_csv("Data/treatments.csv")
 
-treat_names<- tibble(treats = colnames(treatment_list)) %>%
+treat_names <- tibble(treats = colnames(treatment_list)) %>%
   filter(treats != "Filetext")
 
 metadata <- tidy_data %>% select(Filename) %>%
@@ -99,10 +100,12 @@ data_for_SIMCA <- tidy_data %>%
 
 write_csv(data_for_SIMCA, "Tidy_data/XCMS_Data_for_SIMCA.csv")
 
+treatment1 <- as.character(treat_names %>%  filter(treats == main_treatment))
+
 data_for_metaboanalyst_1 <- tidy_data %>%
   left_join(metadata) %>%
   rename("Sample" = Filetext) %>%
-  select(Sample, treat_names$treats[1], any_of(as.character(temp$Feature)))
+  select(Sample, treatment1 , any_of(as.character(temp$Feature)))
 
 data_for_metaboanalyst_2 <- tidy_data %>%
   left_join(metadata) %>%
@@ -124,6 +127,8 @@ return(paste("Peak intensity tables suitable for SIMCA + metaboanalyst saved as 
 
 # Then you can run the function on your data by changing "folder = " to be the name you gave your unzipped xcms download folder
 # Change "prefix = " to the initials used when you ran MassLynx (e.g. Joe Bloggs would have files called JB-051222-001.mzML etc)
+# Change "main_treatment = " to the treatment you want for 1factor analysis e.g. if you will be doing 1factor analysis in metaboanalyst
 tidy_xcms_online_peak_table(
-  folder = "2021-10-22_aq_pos_alltimepoints_param86466_XCMS-results",
-  prefix = "ep")
+  folder = "2022-05-23_aq_pos_T3NMonly_DSvWW",
+  prefix = "ep",
+  main_treatment = "Drought")

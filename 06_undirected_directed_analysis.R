@@ -69,7 +69,7 @@ get_metadata <- function(MStype){
 }
 
 
-metadata <- get_metadata(MStype = "XCMS")
+metadata <- get_metadata(MStype = "XCMS") 
 
 # This function will run an initial PCA on your data so you can see whether there are any major outliers, and if
 # there's a strong enough pattern to proceed with directed analysis
@@ -148,9 +148,9 @@ draw_scores_plot <- function(PC_x, PC_y, colour_class, shape_class){
   graph_raw <- ggplot(data_for_graph, aes(x=get(names(data_for_graph)[1]), y=get(names(data_for_graph)[2]))) +
     geom_point(aes(colour = get(names(data_for_graph)[3]), shape = get(names(data_for_graph)[4]))) +
     stat_ellipse(aes(linetype=get(names(data_for_graph)[4]), colour=get(names(data_for_graph)[3]))) + 
-    scale_colour_discrete(colour_class) +
-    scale_shape_discrete(shape_class) +
-    scale_linetype(shape_class) +
+    scale_colour_discrete(colour_class, na.translate = F) +
+    scale_shape_discrete(shape_class, na.translate = F) +
+    scale_linetype(shape_class, na.translate = F) +
     pca_theme +
     labs(x = (paste(sep = "", PC_x, "(", raw.sum$R2percent[raw.sum$rowname == PC_x], "%)")),
          y = (paste(sep = "", PC_y, "(", raw.sum$R2percent[raw.sum$rowname == PC_y], "%)"))) + #will show the R2 of the specified PC - make sure they match
@@ -167,10 +167,14 @@ draw_scores_plot <- function(PC_x, PC_y, colour_class, shape_class){
 # If you only have one class (treatment group) then you still need to define both colour_class and shape_class but they can be the sames
 scores_plot <- draw_scores_plot(PC_x = "PC1",
                              PC_y = "PC2",
-                             colour_class = "Treat",
-                             shape_class = "Treat")
+                             colour_class = "Drought",
+                             shape_class = "Drought")
 
 scores_plot
+
+# option to save this plot
+ggsave("Tidy_data/PCA_scores_plot.png", scores_plot)
+
 
 # If you have some clustering/ separation between your classes then you can use directed analysis to pull out the features (mz__rt or mz bin)
 # that have the biggest, most reliable effect on the OPLS-DA model ...
@@ -251,9 +255,9 @@ tidy_for_muma <- function(metadata_class, class_1, class_2){
 }
 
 # Run the function for the class and levels of that class that you are interested in
-tidy_for_muma(metadata_class = "Time",
-              class_1 = "T1",
-              class_2 = "T3")
+tidy_for_muma(metadata_class = "Drought",
+              class_1 = "WW",
+              class_2 = "DS")
 
 
 
