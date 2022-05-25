@@ -20,6 +20,7 @@
 # This should have a column "Filetext" with the unique descriptor from "Filetext" in masslynxfilelists.csv
 # You can then add columns with class information called "Treatment1", "Treatment2"
 
+#--- CITING
 
 # Load required packages
 packages_to_load <- c("tidyr", "tibble", "dplyr", "readr", "stringr")
@@ -38,14 +39,19 @@ for (i in 1:length(packages_to_load)){
 }
 cite_packages
 
-file_prefix = "EP-061118-"
+
+
+#---
+
+file = "EP-061118-001a.csv"
 mode = "esi_pos_sens"
 
+#--- FUNCTION
 
 # This function will find your file for you as long as it's in the Data folder, then it will make a table that is ready for SIMCA
-tidy_for_SIMCA <- function(file_prefix, mode){
+tidy_for_SIMCA <- function(file, mode){
 
-data_filename <- paste("Data/", file_prefix, "001a.csv", sep = "")
+data_filename <- paste("Data/", file, sep = "")
 macro_TIC <- read_csv(data_filename, name_repair = "unique") %>%
   rename("mz_bin" = ...1)
 sample_list <- read_csv("Data/masslynxfilelists.csv") %>%
@@ -100,10 +106,12 @@ return(paste("Tidy versions of data and metadata saved to the Tidy_data folder -
 
 }
 
+#--- RUN FUNCTION
+
 # !!! this is where you need to tell the code the prefix of your file (so your initials)
-# e.g. if your files are called "EP-061118-001a" you need to put file_prefix = "EP-061118-" in here
+# e.g. if your files are called "EP-061118-001a" you need to put file = "EP-061118-" in here
 # you also need to specify if you would like to filter your samples by mode if you have run both modes in one run e.g. mode = "esi_pos_sens"
 # if you have nothing in our MSFile column of samplelist.txt then put mode = ""
 #
-tidy_for_SIMCA(file_prefix = "EP-061118-", mode = "esi_pos_sens")
+tidy_for_SIMCA(file = "EP-061118-001a.csv", mode = "esi_pos_sens")
 
