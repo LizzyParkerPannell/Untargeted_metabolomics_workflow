@@ -4,8 +4,8 @@
 # Inter operable code to tidy the data from the in-house macro, in order to obtain a peak table
 
 # Check that your project is saved in the working directory "Untargeted_metabolomics_workflow" and that this folder
-# contains folders called "Data" containing the files below
-# "Tidy_data" (empty for now, this is where your peak intensity tables will be stored)
+# contains a folder called "Tidy_data" (empty for now, this is where your peak intensity tables will be stored)
+# and another folder called "Data" containing the files below:
 
 # The macro saves a number of sheets within the excel file. For the peak table, we want the sheet called "% tot ion1"
 # In the macro output, select the "% tot ion1" sheet and then File > Save As > Choose CSV (Comma Delimited)(*.csv) for file type and
@@ -43,7 +43,7 @@ mode = "esi_pos_sens"
 
 
 # This function will find your file for you as long as it's in the Data folder, then it will make a table that is ready for SIMCA
-tidy_for_SIMCA <- function(file_prefix){
+tidy_for_SIMCA <- function(file_prefix, mode){
 
 data_filename <- paste("Data/", file_prefix, "001a.csv", sep = "")
 macro_TIC <- read_csv(data_filename, name_repair = "unique") %>%
@@ -102,5 +102,8 @@ return(paste("Tidy versions of data and metadata saved to the Tidy_data folder -
 
 # !!! this is where you need to tell the code the prefix of your file (so your initials)
 # e.g. if your files are called "EP-061118-001a" you need to put file_prefix = "EP-061118-" in here
-tidy_for_SIMCA(file_prefix = "EP-061118-")
+# you also need to specify if you would like to filter your samples by mode if you have run both modes in one run e.g. mode = "esi_pos_sens"
+# if you have nothing in our MSFile column of samplelist.txt then put mode = ""
+#
+tidy_for_SIMCA(file_prefix = "EP-061118-", mode = "esi_pos_sens")
 
