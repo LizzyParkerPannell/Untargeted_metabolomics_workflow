@@ -132,3 +132,13 @@ tidy_xcms_online_peak_table(
   folder = "2022-05-23_aq_pos_T3NMonly_DSvWW",
   prefix = "ep",
   main_treatment = "Drought")
+
+
+
+#--- Dealing with technical reps
+
+## IF YOU HAVE TECHNICAL REPS
+
+# Run the peak intensity table you created above through a PCA (see flowchart and guides)
+# If all your technical reps cluster nicely as expected, then you can come back to this point and average across your technical reps
+# using the following code (you may decide it is better to choose the first tech rep of each sample)
