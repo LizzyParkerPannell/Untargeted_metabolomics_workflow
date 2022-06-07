@@ -15,6 +15,8 @@
 # This should have a column "Filetext" with the unique descriptor from "Filetext" in MALDI_samplelist.csv
 # You can then add columns with class/ grouping information e.g. "Treatment1", "Treatment2"
 
+# You need to make sure you have a folder called "Untargeted_metabolomics_workflow/Tidy_data"
+
 # Load required packages
 packages_to_load <- c("tidyr", "tibble", "dplyr", "readr", "stringr")
 lapply(packages_to_load, require, character.only = TRUE)  

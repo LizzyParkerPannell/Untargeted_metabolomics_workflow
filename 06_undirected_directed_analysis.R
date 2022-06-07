@@ -48,6 +48,10 @@ get_peak_table <- function(MStype){
 
 peak_table <- get_peak_table(MStype = "XCMS")
 
+## useful manual step here is to check how many features are included in your analysis (i.e. how many variables)
+## this should be the number of variables in peak_table minus 1 (the 1 being the column of samples)
+## You can report this as e.g. "After grouping and alignment, the processed data comprised XXX features for analysis."
+
 # If you saved the tidied peak table yourself from another source, check it is formatted correctly, and then define it here
 # This is also an option if you have e.g. multiple tidied xcms downloads in the same folder
 
@@ -146,7 +150,7 @@ draw_scores_plot <- function(PC_x, PC_y, colour_class, shape_class){
   
   #graph of PCA with 95%CI ellipses coded by treatment and timepoint
   graph_raw <- ggplot(data_for_graph, aes(x=get(names(data_for_graph)[1]), y=get(names(data_for_graph)[2]))) +
-    geom_point(aes(colour = get(names(data_for_graph)[3]), shape = get(names(data_for_graph)[4]))) +
+    geom_point(aes(colour = get(names(data_for_graph)[3]), shape = get(names(data_for_graph)[4])), size = 3) +
     stat_ellipse(aes(linetype=get(names(data_for_graph)[4]), colour=get(names(data_for_graph)[3]))) + 
     scale_colour_discrete(colour_class, na.translate = F) +
     scale_shape_discrete(shape_class, na.translate = F) +
@@ -165,10 +169,10 @@ draw_scores_plot <- function(PC_x, PC_y, colour_class, shape_class){
 
 # use the function draw_scores_plot to make various graphs (it will automatically tell you the variance associated with the PCs you choose)
 # If you only have one class (treatment group) then you still need to define both colour_class and shape_class but they can be the sames
-scores_plot <- draw_scores_plot(PC_x = "PC1",
-                             PC_y = "PC2",
-                             colour_class = "Drought",
-                             shape_class = "Drought")
+scores_plot <- draw_scores_plot(PC_x = "PC2",
+                             PC_y = "PC3",
+                             colour_class = "Time",
+                             shape_class = "AMF")
 
 scores_plot
 

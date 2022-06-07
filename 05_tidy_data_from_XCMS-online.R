@@ -129,9 +129,9 @@ return(paste("Peak intensity tables suitable for SIMCA + metaboanalyst saved as 
 # Change "prefix = " to the initials used when you ran MassLynx (e.g. Joe Bloggs would have files called JB-051222-001.mzML etc)
 # Change "main_treatment = " to the treatment you want for 1factor analysis e.g. if you will be doing 1factor analysis in metaboanalyst
 tidy_xcms_online_peak_table(
-  folder = "2022-05-23_aq_pos_T3NMonly_DSvWW",
+  folder = "2022-06-02_aq_pos_allTP_DSonly_AMvsNM",
   prefix = "ep",
-  main_treatment = "Drought")
+  main_treatment = "AMF")
 
 
 
