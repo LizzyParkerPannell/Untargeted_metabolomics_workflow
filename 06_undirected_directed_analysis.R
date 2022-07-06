@@ -169,15 +169,16 @@ draw_scores_plot <- function(PC_x, PC_y, colour_class, shape_class){
 
 # use the function draw_scores_plot to make various graphs (it will automatically tell you the variance associated with the PCs you choose)
 # If you only have one class (treatment group) then you still need to define both colour_class and shape_class but they can be the sames
-scores_plot <- draw_scores_plot(PC_x = "PC2",
-                             PC_y = "PC3",
+scores_plot <- draw_scores_plot(PC_x = "PC1",
+                             PC_y = "PC2",
                              colour_class = "Time",
-                             shape_class = "AMF")
+                             shape_class = "Treat")
 
-scores_plot
+scores_plot 
+
 
 # option to save this plot
-ggsave("Tidy_data/PCA_scores_plot.png", scores_plot)
+ggsave("Tidy_data/PCA_scores_plot.png", scores_plot + scale_colour_manual("Time", values=c("T1"="black", "T3"="tomato")))
 
 
 # If you have some clustering/ separation between your classes then you can use directed analysis to pull out the features (mz__rt or mz bin)
