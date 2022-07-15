@@ -12,7 +12,7 @@
 # OR you will need a metadata file with "Sample" as the first column followed by you treatments (classes/ grouping information) in separate columns
 
 # Load required packages
-packages_to_load <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "muma", "forcats")
+packages_to_load <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "muma", "forcats", "vegan")
 lapply(packages_to_load, require, character.only = TRUE)  
 
 # Don't forget to cite these packages in your thesis/ manuscript (this code will automatically make a table of text citations for you)
@@ -180,6 +180,26 @@ scores_plot
 # option to save this plot
 ggsave("Tidy_data/PCA_scores_plot.png", scores_plot + scale_colour_manual("Time", values=c("T1"="black", "T3"="tomato")))
 
+#-------
+
+# a PERMANOVA is another type of multivariate analysis and can help corroborate any differences in your PCA model
+# adonis2 from the vegan package is used to run a PERMANOVA
+# first we have to do some missing value imputation - you can adjust this if you want to but here we just replace add 1 to all intensities
+# as it is very rare to have an intensity of 1
+
+#if you don't have zeros you will not need to impute
+impute <- function(x, na.rm=FALSE)(x+1)
+
+permanova_data <- peak_table %>% 
+  select(-Sample) #%>%
+  #mutate_all(impute)
+
+# here you will need to tell the model which metadata you want in your formula:
+PERMANOVA <- adonis2(permanova_data ~ AMF, metadata, permutations=999)
+
+write.csv(PERMANOVA, "Tidy_data/PERMANOVA_output.csv")
+
+#-------
 
 # If you have some clustering/ separation between your classes then you can use directed analysis to pull out the features (mz__rt or mz bin)
 # that have the biggest, most reliable effect on the OPLS-DA model ...
