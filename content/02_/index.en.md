@@ -1,1 +1,1 @@
-# Stage 2
+# Data acquisition i.e. Mass spectrometry

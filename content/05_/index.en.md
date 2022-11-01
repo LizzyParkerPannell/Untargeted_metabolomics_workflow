@@ -1,1 +1,1 @@
-# Stage 5
+# Extracting and formatting peak table and metadata
