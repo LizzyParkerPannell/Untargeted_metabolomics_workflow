@@ -17,6 +17,7 @@ James Pitman<sup>3</sup>,
 David Hopkins<sup>5</sup>, 
 Alex Williams<sup>5</sup>,
 Heather Walker<sup>4</sup>
+Duncan Cameron<sup>6</sup>
 .
 
 ❋ EP and KB are grateful to the University of Sheffield for “Unleash your data and software funding” that facilitated documentation of this workflow
@@ -26,10 +27,11 @@ Heather Walker<sup>4</sup>
 3. JP contributed to writing DI-ESI-MS documents, tested workflow, contributed to R codes
 4. HW contributed protocols and guides to in-house tools, tested workflow, contributed to project planning
 5. DH, AW tested workflows and R codes, contributed to project planning and aims
+6. DC contributed to project planning and aims, supported the project with resources
 
 #### Acknowledgements
 
-With thanks to Duncan Cameron, Harry Wright, Rachel George and Sophia van Mourik for their feedback.
+With thanks to Harry Wright, Rachel George, Sophia van Mourik and Erika Hansson for their feedback.
 
 ## A note on experimental structure
 
