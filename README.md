@@ -9,6 +9,8 @@ For now please cite this github repository if you use the code.
 A protocol manuscript is in preparation for this workflow and it is also published in Elizabeth Parker's thesis (which is currently under embargo).
 Details to follow.
 
+This repository also contains the content for [untargeted-metabolomics-workflow.netlify.app](untargeted-metabolomics-workflow.netlify.app) which is a comprehensive guide to using the workflow.
+
 #### Contribution credits
 
 Elizabeth Parker<sup>1❋</sup>, 
