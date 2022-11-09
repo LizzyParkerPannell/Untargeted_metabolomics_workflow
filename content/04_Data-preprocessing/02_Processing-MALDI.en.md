@@ -1,7 +1,7 @@
 ---
-title: MSConvert MALDI
+title: Processing MALDI data
 weight: 2
 tags: <MALDI>
 ---
 
-## Convert MALDI data to open format
+## Pre-processing MALDI data with MassUp

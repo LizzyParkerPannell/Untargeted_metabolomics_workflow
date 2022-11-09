@@ -1,7 +1,7 @@
 ---
-title: MSConvert LCMS
+title: Processing LCMS
 weight: 3
 tags: <LCMS>
 ---
 
-## Convert LC-ESI-MS data to open format
+## Pre-processing LC-ESI-MS data with XCMS Online

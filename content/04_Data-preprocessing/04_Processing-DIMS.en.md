@@ -1,7 +1,7 @@
 ---
-title: MSConvert DIMS
+title: Processing DIMS
 weight: 4
 tags: <DI-ESI-MS>
 ---
 
-## Convert direct injection ESI-MS data to open format
+## Pre-processing direct injection ESI-MS data with MassUp
