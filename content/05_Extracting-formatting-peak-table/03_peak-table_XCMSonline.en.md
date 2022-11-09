@@ -1,7 +1,7 @@
 ---
-title: MSConvert LCMS
-weight: 3
+title: Peak Table LCMS
+weight: 4
 tags: <LCMS>
 ---
 
-## Convert LC-ESI-MS data to open format
+## Extracting a peak table with data downloaded from XCMS Online

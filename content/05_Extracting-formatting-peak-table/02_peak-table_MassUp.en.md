@@ -1,7 +1,7 @@
 ---
-title: MSConvert MALDI
-weight: 2
-tags: <MALDI>
+title: Peak table MassUp
+weight: 3
+tags: <MALDI><DIMS>
 ---
 
-## Convert MALDI data to open format
+## Generating a Peak Table from MassUp Data
