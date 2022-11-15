@@ -2,7 +2,7 @@
 chapter: true
 date: "2022-11-08T11:19:11+01:00"
 pre: <b>06. </b>
-title: Multivariate analysis
+title: 06. Multivariate analysis
 weight: 7
 ---
 
