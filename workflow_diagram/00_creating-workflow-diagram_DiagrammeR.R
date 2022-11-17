@@ -18,85 +18,6 @@ for (i in 1:length(packages_to_load)){
 }
 cite_packages
 
-
-grViz("
-      digraph flow{
-      
-      #arrangement attributes
-      splines = ortho
-      overlap = orthoxy
-      rankdir = 'TB'
-      
-      subgraph stage_01{
-      
-      cluster=TRUE
-      #node [shape = 'rectangle', style = 'filled', width = 7, fontname = 'Arial]
-      #I [label = '@@10'];
-      
-        subgraph metabolite_extraction{
-        
-        node [shape = 'diamond', style = 'filled', width = 1.5, height = 1, fontname = 'Arial']
-        a [label = '@@1']; 
-        {rank = min; a}
-      
-        node[shape = 'invtrapezium', style = 'filled', width = 1.5 height = 1, fontname = 'Arial']
-        b [label = '@@2']; 
-        c [label = '@@3'];
-        {rank = max; b}
-        
-        # Connect nodes with edges and labels
-        a -> b [label = 'Plants', fontname = 'Arial']
-        a -> c [label = 'Bacteria', fontname = 'Arial']
-        c -> b
-      }}
-
-      subgraph stage_02{
-      
-      cluster=TRUE
-      
-        subgraph mass_spec{
-        
-        node [shape = 'diamond', style = 'filled', width = 1.5, height = 1, fontname = 'Arial']
-        d [label = '@@4'];
-      
-        node[shape = 'rectangle', style = 'filled', width = 1.5 height = 1, fontname = 'Arial']
-        e [label = '@@5']; 
-        f [label = '@@6'];
-        g [label = '@@7'];
-        h [label = '@@8'];
-        {rank = same; e; f; g; h}
-        
-        node[shape = 'parallelogram', style = 'filled', width = 1.5 height = 1, fontname = 'Arial']
-        i [label = '@@9'];
-      
-        # Connect nodes with edges and labels
-        b -> d
-        d -> e
-        d -> f
-        d -> g
-        d -> h
-        e -> i
-        f -> i
-        g -> i
-        h -> i
-        }}
-      }
-        
-      [1]: 'Bacteria or plants' 
-      [2]: paste0('Quenching,\\n extraction &\\n phase separation') 
-      [3]: paste0('Growth &\\n isiolation of cells')  
-      [4]: 'Which MS?'
-      [5]: paste0('Matrix Assisted Laser\\n Desorption Ionisation\\n (MALDI-ToF)')
-      [6]: paste0('Direct Injection\\n Mass Spectrometry\\n (DI-ESI-MS)')
-      [7]: paste0('Liquid Chromatography\\n Mass Spectrometry\\n (LC-ESI-MS)')
-      [8]: paste0('Gas Chromatography\\n Mass Spectrometry\\n (GC-ESI-MS)')
-      [9]: paste0('.RAW files\\n from MassLynx')
-      
-      #[10]: 'Stage 01 - Metabolite Extraction'
-      
-  
-")
-
 red <- brewer.pal(8, 'Spectral')[1]
 orange <- brewer.pal(8, 'Spectral')[2]
 pale_orange <- brewer.pal(8, 'Spectral')[3]
@@ -120,6 +41,9 @@ grViz("
             bgcolor = '#D53E4F'
             color = '#D53E4F'
             
+            I[label = '@@1', color = '#D53E4F', fillcolor = '#D53E4F', shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white'];
+
+            
             node [shape = 'diamond', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
             a [label = '@@10']; 
             {rank = min; a}
@@ -139,17 +63,38 @@ grViz("
           subgraph cluster_02{
           bgcolor = '#F46D43'
           color = '#F46D43'
+          
+          II[label = '@@2', color = '#F46D43', shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white'];
+          
+          node [shape = 'diamond', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
+          d [label = '@@13'];
+          {rank = min; d}
+          
+          node[shape = 'rectangle']
+          e [label = '@@14']
+          f [label = '@@15']
+          g [label = '@@16']
+          h [label = '@@17']
+          
+          edge[color = 'white']
+          b -> d
+          d -> e 
+          d -> f
+          d -> g
+          d -> h
+          
+          
+            #edge[style = 'invisible', arrowhead = 'none', len = 0]
+            #I -> II
           }
       
-      node[shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
-      I[label = '@@1', color = '#D53E4F', fillcolor = '#D53E4F'];
-      II[label = '@@2', color = '#F46D43'];
-      III[label = '@@3', color = '#FDAE61']
+      #III[label = '@@3', color = '#FDAE61', shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
       
-      edge[style = 'invisible', arrowhead = 'none', len = 0]
-      I -> II -> III
+    
       
       #aligning stage titles with clusters
+      {rank = same; a; I}
+      {rank = same; d; II}
       
       }}
       
@@ -164,6 +109,11 @@ grViz("
       [9]:
       [10]: 'Bacteria or plants' 
       [11]: paste0('Quenching,\\n extraction &\\n phase separation') 
-      [12]: paste0('Growth &\\n isolation of cells')  
+      [12]: paste0('Growth &\\n isolation of cells') 
+      [13]: 'Which MS?'
+      [14]: paste0('MALDI')
+      [15]: paste0('DI-ESI-MS')
+      [16]: paste0('LC-ESI-MS')
+      [17]: paste0('GC-ESI-MS')
       
       ")
