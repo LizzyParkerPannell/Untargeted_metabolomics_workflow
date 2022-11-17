@@ -41,9 +41,6 @@ grViz("
             bgcolor = '#D53E4F'
             color = '#D53E4F'
             
-            I[label = '@@1', color = '#D53E4F', fillcolor = '#D53E4F', shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white'];
-
-            
             node [shape = 'diamond', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
             a [label = '@@10']; 
             {rank = min; a}
@@ -52,6 +49,11 @@ grViz("
             b [label = '@@11']; 
             c [label = '@@12'];
             {rank = max; b}
+            
+            node[shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
+            I[label = '@@1', color = '#D53E4F', fillcolor = '#D53E4F'];
+            {rank = same; a ; I}
+
         
            # Connect nodes with edges and labels
            edge[color = 'white']
@@ -64,7 +66,7 @@ grViz("
           bgcolor = '#F46D43'
           color = '#F46D43'
           
-          II[label = '@@2', color = '#F46D43', shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white'];
+         
           
           node [shape = 'diamond', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
           d [label = '@@13'];
@@ -76,6 +78,10 @@ grViz("
           g [label = '@@16']
           h [label = '@@17']
           
+          node[shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
+          II[label = '@@2', color = '#F46D43', fillcolor = '#F46D43'];
+          {rank = same; d; II}
+          
           edge[color = 'white']
           b -> d
           d -> e 
@@ -84,18 +90,12 @@ grViz("
           d -> h
           
           
-            #edge[style = 'invisible', arrowhead = 'none', len = 0]
-            #I -> II
+          edge[style = 'invisible', arrowhead = 'none', len = 0]
+          I -> II
           }
       
       #III[label = '@@3', color = '#FDAE61', shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
-      
     
-      
-      #aligning stage titles with clusters
-      {rank = same; a; I}
-      {rank = same; d; II}
-      
       }}
       
       [1]: 'Stage 1 Metabolite Extraction'
