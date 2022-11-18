@@ -153,37 +153,39 @@ grViz("
           node[shape = 'rectangle', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
           u [label = '@@28']
           v [label = '@@29']
+         
+          node[shape = 'parallelogram', style = 'filled', width = 2, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
+          x [label = '@@30']
+          y [label = '@@31']
+         {rank = same; x; y}
           
           node[shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
           V[label = '@@5', color = '#E6F598', fillcolor = '#E6F598'] #pale_yellow
           
           edge[color = 'white']
-          s -> u
-          t -> v
+          s -> u -> x
+          t -> v -> x
           
           edge[style = 'invisible', arrowhead = 'none', len = 0]
           IV -> V
+          x -> y
+          
           }
           
           subgraph cluster_06{
           bgcolor = '#ABDDA4'
           color = '#ABDDA4'
           
-          node[shape = 'parallelogram', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
-          x [label = '@@30']
-          y [label = '@@31']
-         {rank = same; x; y}
           
           node[shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
           VI[label = '@@6', color = '#ABDDA4', fillcolor = '#ABDDA4'] #pale_green
           
           edge[color = 'white']
-          u -> x
-          v -> x
+          
           
           edge[style = 'invisible', arrowhead = 'none', len = 0]
           V -> VI
-          x -> y
+          
           }
           
           
@@ -219,8 +221,8 @@ grViz("
       [27]: paste0('XCMSonline or R to run\\n XCMS\\n (Peak picking, RT correction, alignment, grouping)')
       [28]: paste0('Download each processed sample\\n spectra from MassUp as .csv \\n& tidy in R')
       [29]: paste0('Download results folder \\n& tidy in R')
-      [30]: paste0('.csv Peak table\\n (samples as rows, \\nm/z as columns)')
-      [31]: paste0('.csv meta data\\n (sample, independent \\nvariable 1 …)')
+      [30]: paste0('.csv Peak table\\n (samples as rows, m/z as columns)')
+      [31]: paste0('.csv meta data\\n (sample, independent variable 1 …)')
 
       
       ")
