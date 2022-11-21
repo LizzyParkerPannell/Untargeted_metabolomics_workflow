@@ -34,8 +34,8 @@ url = "https://github.com/LizzyParkerPannell/Untargeted_metabolomics_workflow"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='far fa-fw fa-copy'></i> Snippets"
-url = "/snippets"
+name = "<i class='fa fa-map' style='color: white'></i> Workflow Diagram"
+url = "https://untargeted-metabolomics-workflow.netlify.app/00_overview/05_workflow-diagram/"
 weight = 20
 
 [[Languages.en.menu.shortcuts]]
