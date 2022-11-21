@@ -333,4 +333,4 @@ grViz("
 
       
       ") %>%
-  export_svg %>% charToRaw %>% rsvg_pdf("workflow_diagram/workflow_diagram.pdf")
+  export_svg %>% charToRaw %>% rsvg_png("workflow_diagram/workflow_diagram.png")
