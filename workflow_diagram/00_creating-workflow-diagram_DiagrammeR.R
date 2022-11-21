@@ -2,7 +2,7 @@
 # R code to make workflow diagram for website
 
 # Load required packages
-packages_to_load <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "DiagrammeR", "RColorBrewer")
+packages_to_load <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "DiagrammeR", "RColorBrewer", "rsvg", "DiagrammeRsvg")
 lapply(packages_to_load, require, character.only = TRUE)  
 
 # Don't forget to cite these packages in your thesis/ manuscript (this code will automatically make a table of text citations for you)
@@ -78,8 +78,6 @@ grViz("
           
           node[shape = 'parallelogram']
           j [label = '@@19']
-          k [label = '@@19']
-          l [label = '@@19']
           
           node[shape = 'oval', style = 'filled'] # would be best if this was cds symbol but having issues with that
           i [label = '@@18']
@@ -91,8 +89,8 @@ grViz("
           edge[color = 'white']
           b -> d
           d -> e -> j 
-          d -> f -> k
-          d -> g -> l
+          d -> f -> j 
+          d -> g -> j 
           d -> h -> i
           
           edge[style = 'invisible', arrowhead = 'none', len = 0]
@@ -117,9 +115,9 @@ grViz("
           III[label = '@@3', color = '#FDAE61', fillcolor = '#FDAE61'] #pale orange
           
           edge[color = 'white']
-          j -> m -> p
-          k -> n -> q
-          l -> o -> r
+          j -> m -> p[label = 'MALDI', fontname = 'Arial', fontcolor = 'white']
+          j -> n -> q[label = 'DI-ESI-MS', fontname = 'Arial', fontcolor = 'white'] 
+          j -> o -> r[label = 'LC-ESI-MS', fontname = 'Arial', fontcolor = 'white']
           
           edge[style = 'invisible', arrowhead = 'none', len = 0]
           II -> III
@@ -244,7 +242,7 @@ grViz("
           VII[label = '@@7', color = '#66C2A5', fillcolor = '#66C2A5'] #green
           
           edge[color = 'white']
-          a6 -> c1 -> c2 -> c3
+          a5 -> c1 -> c2 -> c3
           c2 -> c4
           
           
@@ -268,12 +266,12 @@ grViz("
           node [shape = 'rectangle', style = 'filled', width = 1.5, height = 1, fontname = 'Arial']
           VIII [label = '@@8', fillcolor = '#3288BD', color = '#3288BD', fontcolor = 'white']
           
-          edge[color = 'white']
+          edge[color = 'gray70']
           j -> d1
-          k -> d1
-          l -> d1
           c2 -> d1
           y -> d1
+          
+          edge[color = 'white']
           d1 -> d2 -> d3
           
           edge[style = 'invisible', arrowhead = 'none', len = 0]
@@ -334,4 +332,5 @@ grViz("
       [49]: paste0('Remember to \\ncite tools used!')
 
       
-      ")
+      ") %>%
+  export_svg %>% charToRaw %>% rsvg_pdf("workflow_diagram/workflow_diagram.pdf")
