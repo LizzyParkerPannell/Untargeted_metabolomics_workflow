@@ -76,13 +76,13 @@ grViz("
           g [label = '@@16']
           h [label = '@@17']
           
-          node[shape = 'cds']
-          i [label = '@@18']
-          
           node[shape = 'parallelogram']
           j [label = '@@19']
           k [label = '@@19']
           l [label = '@@19']
+          
+          node[shape = 'oval', style = 'filled'] # would be best if this was cds symbol but having issues with that
+          i [label = '@@18']
           
           node[shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
           II[label = '@@2', color = '#F46D43', fillcolor = '#F46D43']; # orange
@@ -176,19 +176,110 @@ grViz("
           bgcolor = '#ABDDA4'
           color = '#ABDDA4'
           
+          node [shape = 'diamond', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
+          z [label = '@@32'];
+          {rank = min; z}
+          
+            subgraph cluster_multivariate_analysis{
+            bgcolor = '#ABDDA4'
+            color = 'white'
+            
+            node [shape = 'rectangle', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
+            a1 [label = '@@33']
+            a2 [label = '@@34']
+            a3 [label = '@@35']
+            a4 [label = '@@36']
+            
+            node [shape = 'rectangle', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fontcolor = 'white', fillcolor = '#ABDDA4', color = 'white']
+            b1 [label = '@@39'];
+            b2 [label = '@@40'];
+            b3 [label = '@@41'];
+          {rank = same; b1; b2; b3}
+            
+            }
+            
+          node [shape = 'parallelogram', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
+          a5 [label = '@@37']
+          
+          node [shape = 'cds', style = 'filled']
+          a6 [label = '@@38']
+          {rank = same; a5; a6}
           
           node[shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
           VI[label = '@@6', color = '#ABDDA4', fillcolor = '#ABDDA4'] #pale_green
+          note1 [label = '@@42', color ='white', fillcolor = '#ABDDA4']
           
           edge[color = 'white']
-          
+          x -> z
+          a1 -> a2 -> a3 -> a4 -> a5
+          a3 -> a6
+          a4 -> a6
+          z -> b1 [label = 'Open source, \\nlocal, \\nversion control', fontname = 'Arial', fontcolor = 'white']
+          z -> b2 [label = 'Open source, \\nonline, \\nguided \\nsense checks', fontname = 'Arial', fontcolor = 'white']
+          z -> b3 [label = 'Proprietary, \\npoint & click', fontname = 'Arial', fontcolor = 'white']
+          b1 -> b2 [label = 'see note *', fontname = 'Arial', fontcolor = 'white']
           
           edge[style = 'invisible', arrowhead = 'none', len = 0]
+          z -> a1
+          b1 -> a1
           V -> VI
           
           }
           
+          subgraph cluster_07{
+          bgcolor = '#66C2A5'
+          color = '#66C2A5'
           
+          node [shape = 'rectangle', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
+          c1 [label = '@@43']
+                    
+          node [shape = 'parallelogram']
+          c2 [label = '@@44']
+          
+          node [shape = 'cds', style = 'filled']
+          c3 [label = '@@45']
+          c4 [label = '@@46']
+          
+          node[shape = 'rectangle', style = 'filled', width = 1.5, fontname = 'Arial', fontcolor = 'white']
+          VII[label = '@@7', color = '#66C2A5', fillcolor = '#66C2A5'] #green
+          
+          edge[color = 'white']
+          a6 -> c1 -> c2 -> c3
+          c2 -> c4
+          
+          
+          edge[style = 'invisible', arrowhead = 'none', len = 0]
+          VI -> VII
+          }
+          
+          subgraph cluster_08{
+          bgcolor = '#3288BD'
+          color = '#3288BD'
+          
+          node [shape = 'hexagon', style = 'filled', width = 1.5, height = 1, fontname = 'Arial', fillcolor = 'white', color = 'white']
+          d1 [label = '@@47']
+          
+          node [shape = 'rectangle']
+          d2 [label = '@@48']
+          
+          node [shape = 'triangle']
+          d3 [label = '@@49']
+          
+          node [shape = 'rectangle', style = 'filled', width = 1.5, height = 1, fontname = 'Arial']
+          VIII [label = '@@8', fillcolor = '#3288BD', color = '#3288BD', fontcolor = 'white']
+          
+          edge[color = 'white']
+          j -> d1
+          k -> d1
+          l -> d1
+          c2 -> d1
+          y -> d1
+          d1 -> d2 -> d3
+          
+          edge[style = 'invisible', arrowhead = 'none', len = 0]
+          VII -> VIII
+          
+          }
           
       }}
       
@@ -223,6 +314,24 @@ grViz("
       [29]: paste0('Download results folder \\n& tidy in R')
       [30]: paste0('.csv Peak table\\n (samples as rows, m/z as columns)')
       [31]: paste0('.csv meta data\\n (sample, independent variable 1 …)')
+      [32]: paste0('Open source, \\nonline, proprietary \\nand/ or local')
+      [33]: paste0('Load data & metadata')
+      [34]: paste0('Scaling & normalization')
+      [35]: paste0('Exploratory analysis (PCA, PERMANOVA \\n& interpretation')
+      [36]: paste0('Directed analysis (OPLS-DA & detailed statistics) \\n& interpretation')
+      [37]: paste0('Features of interest \\n(m/z or m/z with retention time)')
+      [38]: paste0('Graphs & stats \\nfor reporting')
+      [39]: paste0('R and RStudio')
+      [40]: paste0('Metaboanalyst')
+      [41]: paste0('Proprietary multivariate \\nanalysis software \\n(e.g. SIMCA by Umetrics)')
+      [42]: paste0('* Metaboanalyst is R based. \\nClick the button in top left \\nhand corner of the web UI to \\naccess the R script')
+      [43]: paste0('Use detected masses of \\ninterest to search databases/ repositories\\n and literature')
+      [44]: paste0('Putative identities of metabolites\\n responsible for differences between classes')
+      [45]: paste0('Further MS to confirm IDs \\n(targeted, tandem or NMR)')
+      [46]: paste0('Pathway analysis \\n enrichment analysis')
+      [47]: paste0('Prepare data for\\n submission to repository')
+      [48]: paste0('Submit data to MetaboLights')
+      [49]: paste0('Remember to \\ncite tools used!')
 
       
       ")
