@@ -5,4 +5,4 @@ weight: 5
 
 # Workflow diagram
 
-pending
+{{< figure src="/workflow_diagram/workflow_diagram.pdf" >}}
