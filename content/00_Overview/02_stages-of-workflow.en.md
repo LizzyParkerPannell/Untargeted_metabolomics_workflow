@@ -8,15 +8,15 @@ weight: 2
 The workflow has been divided into stages. We use the following number codes in the documentation presented here as well as in the R code and workflow diagram.
 
 
-00 - Overviews, workflow diagram + useful information
-01 - Metabolite extraction
-02 - Data acquisition (Mass Spectrometry)
-03 - Converting data to open format
-04 - Data pre-processing
-05 - Extracting + formatting peak table + metadata
-06 - Multivariate analysis (PCA) + further analysis (if applicable)
-07 - Putative metabolite identification
-08 - Archiving data + citing resources
+00. Overviews, workflow diagram & useful information
+01. Metabolite extraction
+02. Data acquisition (Mass Spectrometry)
+03. Converting data to open format
+04. Data pre-processing
+05. Extracting & formatting peak table & metadata
+06. Multivariate analysis (PCA) & further analysis (if applicable)
+07. Putative metabolite identification
+08. Archiving data & citing resources
 
 <br>
 
