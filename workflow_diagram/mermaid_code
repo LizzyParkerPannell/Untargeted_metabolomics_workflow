@@ -1,0 +1,52 @@
+graph TD
+
+    subgraph S01[Stage 1 - Metabolite Extraction]
+    A{Plants or bacteria} -->|Plants| B[\Quenching, extraction & phase separation/]
+    A --> |Bacteria| C[\Growth & isolation of cells/] --> B
+    
+    classDef red fill:#D53E4F, stroke:#D53E4F;
+    class A,B,C red;
+    end
+
+    subgraph S02[Stage 2 - Data Acquisition]
+    D{Which MS?} --> E[MALDI]
+    D --> F[DI-ESI-MS]
+    D --> G[LC-ESI-MS]
+    D --> H[GC-ESI-MS] --> I>Standardized GCMS workflow]
+    E --> J[/.RAW files from MassLynx/]
+    F --> J
+    G --> J
+
+    classDef orange fill:#F46D43, stroke:#F46D43;
+    class D,E,F,G,H,I,J orange;
+    end
+
+    B --> D
+
+    subgraph S03[Stage 3 - Data conversion to open format]
+    K[Convert data\n Proteowizard > MSConvert\n * scanEvent\n * polarity]
+    L[Convert & compress data\n Proteowizard > MSConvert\n * Scan range\n * scanEvent\n * polarity]
+    M[Convert & compress data\n Proteowizard > MSConvert\n * peakPicking\n * scanEvent\n * polarity]
+
+    classDef pale_orange fill:#FDAE61, stroke:#FDAE61;
+    class K,L,M pale_orange;
+    end
+
+    J -->|MALDI|K
+    J -->|DI-ESI-MS|L
+    J -->|LC-ESI-MS|M
+
+    subgraph S04[Stage 4 - Data preprocessing]
+    end
+
+    subgraph S05[Stage 5 - Extract & format peak table & metadata]
+    end
+
+    subgraph S06[Stage 6 - Multivariate analysis]
+    end
+
+    subgraph S07[Stage 7 - Putative metabolite identification]
+    end
+
+    subgraph S08[Stage 8 - Data archiving and reporting]
+    end
