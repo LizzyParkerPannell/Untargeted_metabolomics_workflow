@@ -6,8 +6,13 @@ This diagram summarises the entire workflow and can help you make decisions abou
 
 The diagram is split into sections which correspond to the stages of the guide (see sidebar menu).
 
-<pre class="mermaid">
-graph TD
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <pre class="mermaid">
+  graph TD
 
     subgraph S01[ ]
     title_S01[Stage 1 - Metabolite Extraction]
@@ -181,5 +186,12 @@ graph TD
 %% #ABDDA4
 %% #66C2A5
 %% #3288BD
-<\pre>
+
+</pre>
+    <script type="module">
+      import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
     
