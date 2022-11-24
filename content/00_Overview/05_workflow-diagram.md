@@ -6,7 +6,7 @@ The workflow diagram summarises the entire workflow and can help you make decisi
 
 The diagram is split into sections which correspond to the stages of the guide (see sidebar menu).
 
-```{mermaid}
+```mermaid
 %%{init: {'theme': 'base',
          }
 }%%
