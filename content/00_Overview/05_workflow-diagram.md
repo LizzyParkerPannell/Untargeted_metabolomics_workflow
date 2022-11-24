@@ -6,7 +6,10 @@ The workflow diagram summarises the entire workflow and can help you make decisi
 
 The diagram is split into sections which correspond to the stages of the guide (see sidebar menu).
 
-{{<mermaid align="left">}}
+```{mermaid}
+%%{init: {'theme': 'base',
+         }
+}%%
 graph TD
   subgraph S01[ ]
   title_S01[Stage 1 - Metabolite Extraction]
@@ -128,5 +131,5 @@ graph TD
   %% defining subgraph styling
   classDef subgraphstyle fill:white, stroke:white, stroke-width:0;
   class S01,S02,S03,S04,S05,S06,S07,S08,S12 subgraphstyle;
-{{< /mermaid >}}
+```
 
