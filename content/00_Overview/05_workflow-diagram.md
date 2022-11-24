@@ -13,7 +13,7 @@ The diagram is split into sections which correspond to the stages of the guide (
     <meta charset="utf-8" />
   </head>
   <body>
-    <pre class="mermaid">
+    <pre class="mermaid" markdown="0">
   graph TD
 
     subgraph S01[ ]
