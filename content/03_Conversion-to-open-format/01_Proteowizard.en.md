@@ -15,3 +15,8 @@ use SeeMS directly here (although it's worth having a play and checking your raw
 
 ### MSConvert
 
+Depending on which type of MS you have used, we will use different settings/ parameters in MSConvert, so click through or use the menu on the left for instructions to complete this step.
+
+We want to convert our .RAW files (which each contain lots of data and metadata about the run in separate files and are BIG). .RAW files are specific to Waters software and will not work with many open source tools. We will convert them to .mzML which is the standard open data format for mass spectrometry[^1]. 
+
+[^1]:**Martens *et al.* (2011).** mzML—a Community Standard for Mass Spectrometry Data. Mol. Cell. Proteomics DOI: https://doi.org/10.1074/mcp.R110.000133 
