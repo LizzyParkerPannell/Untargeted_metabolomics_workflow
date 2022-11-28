@@ -7,23 +7,28 @@ weight: 4
 
 Once you have a list of your putative IDs from METLIN, cross reference these with [KEGG COMPOUND](https://www.genome.jp/kegg/compound/). This will give you a lot of information about the biological roles of any putative compounds.
 
-[KEGG PATHWAY](https://www.genome.jp/pathway/map01100) is a very useful tool for outlining the metabolic processes of a wide range of organisms and you can discount some compounds that are not likely to be produced by your organism. 
+> :bulb: KEGG COMPOUND IDs begin with a C followed by 5 or 6 digits e.g. L-lysine is [C00047](https://www.genome.jp/entry/C00047)
 
-{{< figure src="/images/KEGGpathway.png" >}} {{< figure src="/images/KEGG_changepathwaytype.png" >}}
+[KEGG PATHWAY](https://www.genome.jp/pathway/map01100) is a very useful tool for outlining the metabolic processes of a wide range of organisms and you can discount some compounds that are not likely to be produced by your organism. 
 
 > :warning: be careful with discounting compounds in this way if you have a multi organism system or one where compounds amy have been introduced from another source than our study organism. For example:
 - :mushroom: roots of arbuscular mycorrhizal plants will contain both plant and fungal compounds
 - :microbe: root exudates will contain compounds that bacteria biosynthesize but plants don’t
 - :seedling: plant compounds can be used as antimicrobials and medical (human or vetinary) drugs
 - :tractor: field samples may contain pesticides and contaminants
+---
+### Using KEGG PATHWAY
 
 Open KEGG PATHWAY > Change Pathway Type > Use Ctrl + F and enter the name of your organism > click on the three letter code to the left of your organism
 This will code all your KEGG pathways to highlight those that are relevant to your organism.
 
 > Note - if there is not a map for your particular organism it is worth doing more investigation into your potential identification to see what kind of compound it is and whether that might feasibly be present in your organism.
 
+{{< figure src="/images/KEGGpathway.png" >}} {{< figure src="/images/KEGG_changepathwaytype.png" >}}
+
 Now, in the box to the left hand side that says “ID search”, paste your list of KEGG IDS and click “Go”. You should get some nodes highlighted red on the KEGG PATHWAY.
 If you hover the cursor over each point, it will tell you the KEGG ID and name - any that are highlighted but are in the greyed out portion of the pathway are unlikely to be produced by your study organism.
+
 You should further cross reference with other metabolite databases to discern whether this is a sensible identification.
 
 **Three red nodes highlighted are likely to be found in this organism, forming part of their global metabolism:**
