@@ -57,9 +57,6 @@ weight = 40
   disableNextPrev = false
   themeVariant = "rse-learn"
 
-[params]
-  mermaidInitialize = "{ \"theme\": \"dark\" }"
-
 [markup]
   [markup.highlight]
     # if `guessSyntax = true`, there will be no unstyled code even if no language
