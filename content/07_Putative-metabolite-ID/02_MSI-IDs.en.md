@@ -1,6 +1,6 @@
 ---
 title: MSI identification guidelines
-weight: 2
+weight: 
 ---
 
 ## MSI identification guidelines
