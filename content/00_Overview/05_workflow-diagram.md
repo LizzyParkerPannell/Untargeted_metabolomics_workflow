@@ -1,7 +1,7 @@
 ---
 title: Workflow diagram
 weight: 5
-mermaidInitialize = "{ \"theme\": \"dark\" }"
+mermaidInitialize = "{ \"theme\": \"default\" }"
 ---
 The workflow diagram summarises the entire workflow and can help you make decisions about which tools are most relevant to your analysis based on the type of Mass Spectrometry you have used.
 
