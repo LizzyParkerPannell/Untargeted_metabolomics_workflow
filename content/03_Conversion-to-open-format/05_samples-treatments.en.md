@@ -1,7 +1,7 @@
 ---
 title: Samples & treatments
 weight: 5
-tags: ["MALDI"]["DIMS"]["LCMS"]
+tags: ["MALDI"], ["DIMS"], ["LCMS"]
 ---
 
 ## Nice neat metadata for analysis
