@@ -18,14 +18,14 @@ For you `samplelist.csv` you need the following columns which can be obtained fr
 3. "MSFile" or an equivalent column that contains either "pos" or "neg" within it
 Any other columns will be ignored in this file
 
-{{<figure src-"/images/samplelist.png">}}
+{{< figure src="/images/samplelist.png" >}}
 
 For your `treatments.csv` you need at least two columns (but can have as many as you like):
 1. "Filetext" : this must contain all the distinct values of Filetext from samplelist.csv
 2. Variable1 : you can call this column whatever you like (but avoid spaces, instead use "-" or "_"). If you have compared a wild-type to a control for example, you might call this column "treatment" and fill it with "WT" and "C"
 2. Variable2 etc : further variables that you wish to analyse. This may include batch identifiers (for example if you have many samples and they were run over multiple days), treatments or environmental variables
 
-{{<figure src-"/images/treatments.png">}}
+{{< figure src="/images/treatments.png" >}}
 
 Keep these in a file with your `.mzml` data
 
