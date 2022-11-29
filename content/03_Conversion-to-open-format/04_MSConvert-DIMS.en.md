@@ -51,3 +51,36 @@ So check that your chosen range fits chromatograms from the start, middle and en
 
 ### File conversion
 
+Open MSConvert
+
+> :warning: If you are using a remote drive (e.g. google drive or onedrive) with a slow connection it is worth doing your conversion in small batches so you can check the file size as you go - if you are seeing big discrepencies you need to go back and check the sizes of your original files. Some files may need re-converting if your connection times out during the process.
+
+File: "Browse" > Select .RAW folders to convert
+{{< figure src="/images/MALDI_convert_browse_raw.png" >}}
+
+Output Directory: Specify an output folder using “Browse”
+{{< figure src="/images/MALDI_convert_destination.png" >}}
+
+Options: Output File > mzML
+
+Filters: select "subset" (from drop-down menu) and then:
+- select "scanNumber" = 17-37 (use your scan selection from when you checked the scan range)
+- select"scanEvent" = 1-1
+- select “polarity = positive” or "polarity = negative" depending on your MS run 
+
+Click “add”
+{{< figure src="/images/DIMS_convert_options.png" >}}
+
+Select "Start" (bottom right)
+N.B. for DIMS data we do not perform PeakPicking during conversion because we need to maintain the profile shape of the data (rather than centroiding)
+{{< figure src="/images/MALDI_convert_start.png" >}}
+
+Check the size of .mzML files - should all be similar. Reconvert any that look small. If you consistently have some that are much smaller, it is worth checking whether these ran properly or whether there were any issues copying or converting the files (such as intermittent internet connection).
+
+When you look at the .mzML files using SeeMS, you will still see the full chromatogram, but if you look at the table of spectra underneath, you should only have rows for each of the scans in the range you specified.
+{{< figure src="/images/DIMS_SeeMS_select.png" >}}
+{{< figure src="/images/DIMS_SeeMS_mzml.png" >}}
+
+> :warning: If you have any big gaps or empty tables when you look at your chromatograms/ spectra in SeeMS, then you should go back and redo the conversion.
+
+
