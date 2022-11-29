@@ -23,8 +23,6 @@ Download MassUp and install on your device
 Open MassUp and click the "import files" icon OR File > Import > Import Files
 The option of “Labelled” will be automatically selected > OK
 
-{{< figure src="/images/" >}}
-
 Tell MassUp how many treatment groups you have (MassUp calls these “Labels”)
 
 > :bulb: If we have Case vs. Control, we have 2 Labels
@@ -33,14 +31,12 @@ Tell MassUp how many samples you have for each Label. You can also rename your L
 
 > :bulb: If we ran 10 extracts in triplicate for Case and 9 in triplicate for Control, we would have 10 samples for Case and 9 for Control
 
-{{< figure src="/images/" >}}
-
 You will now set up the structure of your data. Click on the green plus sign icon and select all the .mzML files from your first treatment group (Label) > OK
 Highlight these files using shift + left click. Then click on the grey distribute icon. This will distribute these samples in order into the boxes on the left, assuming you have equal numbers of technical replicates and you technical replicates follow on from each other. 
 
 > :bulb: If we ran 10 extracts in triplicate for Case, we should select the 30 files that correspond to Case treatment, and will end up with 3 files in each box (Sample)
 
-{{< figure src="/images/" >}}
+{{< figure src="/images/MassUp_load-data.png" >}}
 
 Repeat for your other labels until you have your complete data structure (MassUp calls this “Labelled data set”)
 
@@ -104,6 +100,16 @@ The Replicates QC > Replicates Analysis tab will show a graph with one box per t
 Save your peak lists. 
 
 Sadly in MassUp there is no nice way to export a peak table ([please let me know if you find one!!!](https://github.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/issues)). Instead you have to export each sample’s consensus spectrum and then combine them in R. 
+
+Instead we have to export separate .csv files and create our own in R.
+
+To do this, click the "Save" icon in MassUp. Select "Labelled Aligned Peak List" from the dropdown menu, then select the double green arrow to choose all your processed and aligned data.
+Define an output directory (where you will save your files) and then click "OK".
+
+{{< figure src="MassUp_save-matched-lists.png" >}}
+
+This will save each concensus spectra's aligned peak list in a separate .csv in quite a frustrating hierarchy of files.
+
 
 
 In file explorer, make a folder called “Untargeted_metabolomics_workflow/MALDI_data” in the same directory as this R code (“05_tidy_data_from_MassUp.R”)
