@@ -14,7 +14,7 @@ You need to create two `.csv` files (you can do this in excel, R, google sheets,
 
 For you `samplelist.csv` you need the following columns which can be obtained from your `MassLynx Sample List`:
 1. "Filename" : this is a list of the filenames of your mzml files (the part before the `.mzml`)
-2. "Filetext" : this is the name you have manually added to the metadata of that sample in MassLynx[^*]
+2. "Filetext" : this is the name you have manually added to the metadata of that sample in MassLynx[^1]
 3. "MSFile" or an equivalent column that contains either "pos" or "neg" within it
 Any other columns will be ignored in this file
 
@@ -29,4 +29,4 @@ For your `treatments.csv` you need at least two columns (but can have as many as
 
 Keep these in a file with your `.mzml` data
 
-[^*] You can find this at `$$ SampleID:` in the `_HEADER.txt` file of the original `.RAW` folder if you need to
+[^1] You can find this at `$$ SampleID:` in the `_HEADER.txt` file of the original `.RAW` folder if you need to
