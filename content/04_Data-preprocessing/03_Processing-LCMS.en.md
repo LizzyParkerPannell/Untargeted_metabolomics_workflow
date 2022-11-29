@@ -37,7 +37,7 @@ Do this for all your data groups. So if you have Case vs. Control, you will have
 
 From the homepage "Create job" > "Pairwise"
 
-{{< figure src="/images/XCMS_job_choice.png >}}
+{{< figure src="/images/XCMS_job_choice.png" >}}
 
 Select the first dataset to load in "Select dataset" > "Next"
 Select the second dataset of the comparison with "Select dataset" > "Next"
