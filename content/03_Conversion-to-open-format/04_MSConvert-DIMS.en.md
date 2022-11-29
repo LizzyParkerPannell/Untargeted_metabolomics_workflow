@@ -12,7 +12,7 @@ Below is an example of the chromatograms we get from DI-ESI-MS:
 
 {{< figure src="/images/DIMS_example-chromatogram.png" >}}
 
-> :warning: In this example, the "troughs" or "gaps" in the chromatogram are where the optional lockmass calibration is performed during the run
+> :bulb: In this example, the "troughs" or "gaps" in the chromatogram are where the optional lockmass calibration is performed during the run
 
 Along this chromatogram there is a spectrum for every second (that rate is changeable but default is usually 1scan/sec). 
 
@@ -43,7 +43,7 @@ Identify where your sample peak is in the chromatogram and choose a scan range t
 
 In the example above the peak is centred on 0.5mins (30 seconds). Looking at the spectra list given below the chromatogram we can see that the TIC is high from spectra 17-48 so we would choose a 20 spectra range from within these boundaries (here I have selected 17-37). 
 
-> :warming: Scan range should be the same throughout the run. 20 scans is the minimum number, you can do more if you have a much wider peak. Before you decide on your spectra range, check that chromatograms from later in the run also fit in this range. 
+> :warning: Scan range should be the same throughout the run. 20 scans is the minimum number, you can do more if you have a much wider peak. Before you decide on your spectra range, check that chromatograms from later in the run also fit in this range. 
 Over long runs there can be a bit of a lag build up and samples may be injected a couple of seconds later, shifting the whole peak to the right slightly. 
 So check that your chosen range fits chromatograms from the start, middle and end of the run. 
 
@@ -72,7 +72,8 @@ Click “add”
 {{< figure src="/images/DIMS_convert_options.png" >}}
 
 Select "Start" (bottom right)
-N.B. for DIMS data we do not perform PeakPicking during conversion because we need to maintain the profile shape of the data (rather than centroiding)
+
+> :bulb: For DIMS data we do not perform PeakPicking during conversion because we need to maintain the profile shape of the data (rather than centroiding)
 {{< figure src="/images/MALDI_convert_start.png" >}}
 
 Check the size of .mzML files - should all be similar. Reconvert any that look small. If you consistently have some that are much smaller, it is worth checking whether these ran properly or whether there were any issues copying or converting the files (such as intermittent internet connection).
