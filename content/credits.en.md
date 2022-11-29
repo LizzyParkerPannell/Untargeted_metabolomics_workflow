@@ -12,7 +12,7 @@ Elizabeth Parker^1❋^, Kathryn Billane^2❋^, James Pitman^3^, David Hopkins^5^
 1. EP planned and coordinated the project, wrote the R codes, contributed to writing, created mermaid workflow diagram, authored and maintained the website
 2. KB developed E. coli protocols, contributed to writing and collating documentation for LC-ESI-MS
 3. JP contributed to writing DI-ESI-MS documents, tested workflow, contributed to R codes
-4. HW contributed protocols and guides to in-house tools, tested workflow, contributed to project planning
+4. HW contributed protocols and guides, tested workflow, contributed to project planning, contributed example data sets
 5. DH, AW tested workflows and R codes, contributed to project planning and aims
 6. DC established aims of the project, supported the project with resources and oversaw collaboration
 
