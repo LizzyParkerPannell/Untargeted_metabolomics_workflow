@@ -1,0 +1,111 @@
+graph TD
+
+    subgraph S01[Stage 1 - Metabolite Extraction]
+    A{Plants or bacteria} -->|Plants| B[\Quenching, extraction & phase separation/]
+    A --> |Bacteria| C[\Growth & isolation of cells/] --> B
+    
+    classDef red fill:#D53E4F, stroke:#D53E4F;
+    class A,B,C red;
+    end
+
+    subgraph S02[Stage 2 - Data Acquisition]
+    D{Which MS?} --> E[MALDI]
+    D --> F[DI-ESI-MS]
+    D --> G[LC-ESI-MS]
+    D --> H[GC-ESI-MS] --> I>Standardized GCMS workflow]
+    E --> J[/.RAW files from MassLynx/]
+    F --> J
+    G --> J
+
+    classDef orange fill:#F46D43, stroke:#F46D43;
+    class D,E,F,G,H,I,J orange;
+    end
+
+    B --> D
+
+    subgraph S03[Stage 3 - Data conversion to open format]
+    K[Convert data\n Proteowizard > MSConvert\n * scanEvent\n * polarity]-->|MALDI|N[/.mzML open format\n profile/]
+    L[Convert & compress data\n Proteowizard > MSConvert\n * Scan range\n * scanEvent\n * polarity]-->|DI-ESI-MS|O[/.mzML open format\n profile, selected scans/]
+    M[Convert & compress data\n Proteowizard > MSConvert\n * peakPicking\n * scanEvent\n * polarity]-->|LC-ESI-MS|P[/.mzML open format\n centroid/]
+
+    classDef pale_orange fill:#FDAE61, stroke:#FDAE61;
+    class K,L,M,N,O,P pale_orange;
+    end
+
+    J -->|MALDI|K
+    J -->|DI-ESI-MS|L
+    J -->|LC-ESI-MS|M
+
+    subgraph S04[Stage 4 - Data preprocessing]
+    
+    Q[MassUp or R to run\n MALDIquant\nbaseline correction, normalization, alignment, peak detection]
+    R[XCMSonline or R to run\n XCMS\nPeak picking, RT correction, alignment, grouping]
+
+    classDef yellow fill:#FEE08B, stroke:#FEE08B;
+    class Q,R yellow;
+    end
+
+    N & O --> Q
+    P --> R
+
+    subgraph S05[Stage 5 - Extract & format peak table & metadata]
+    
+    S[Download each sample's .csv\n and tidy in R] --> U[/.csv peak table\n samples as rows, m.z as columns/]
+    T[Download results folder\n and tidy in R] --> U
+    U --- |+|V[/.csv metadata\n sample, independent variable1 .../]
+    
+    classDef pale_yellow fill:#E6F598, stroke:#E6F598;
+    class S,T,U,V pale_yellow;
+
+    end
+    
+    Q --> S
+    R --> T
+
+    subgraph S06[Stage 6 - Multivariate analysis]
+    W{Open source, online, \nlocal and/or proprietary?} -->|Open source\nlocal\nversion control with git|S09[R & RStudio]
+    W -->|Open source\nonline\nsense checks|S10[Metaboanalyst]
+    W -->|Proprietary\nlocal|S11[Proprietary software\n e.g. SIMCA by Umetrics]
+    
+    classDef pale_green fill:#ABDDA4, stroke:#ABDDA4;
+    classDef empty_pale_green fill:honeydew, stroke:#ABDDA4;
+    class W pale_green;
+    class S09,S10,S11 empty_pale_green;
+
+        subgraph S12[In your chosen software:]
+        direction TB
+        A1[Load data and metadata] --> A2[Scaling & normalization] --> A3[Exploratory analysis\n PCA, PERMANOVA & interpretation] --> A4[Directed analysis where appropriate\n OPLS-DA & detailed stats]
+        A4 --> A5[/List of features of interest\nm/z or m/z with RT/]
+        A3 & A4 --> A6>Graphs & stats for reporting]
+        class A1,A2,A3,A4,A5,A6 pale_green;
+        end
+
+    S09 & S10 & S11 --> S12
+
+    end
+
+    V --> W
+
+    subgraph S07[Stage 7 - Putative metabolite identification]
+    X[Use features of interes\n to search databases/repositories\nand literature\n e.g. METLIN, KEGG, PubChem, Cyc, MassBank]
+    X --> Y[/Putative identities of metabolites\n responsible for differences between classes/]
+    Y --> Z>Further MS to confirm IDs\n targeted, tandem or NMR] & Z1>Pathway analysis, enrichment analysis]
+    
+    classDef 
+
+    end
+
+    A5 --> X
+
+    subgraph S08[Stage 8 - Data archiving and reporting]
+    end
+
+%% colors 
+%% #D53E4F
+%% #F46D43
+%% #FDAE61
+%% #FEE08B
+%% #E6F598
+%% #ABDDA4
+%% #66C2A5
+%% #3288BD

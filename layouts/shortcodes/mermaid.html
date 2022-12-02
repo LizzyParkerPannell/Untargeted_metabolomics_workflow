@@ -1,0 +1,8 @@
+{{ if ($.Page.Params.mermaid) }}
+<script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>!window.mermaid && document.write(unescape('%3Cscript src="/js/mermaid-8.9.1/mermaid.min.js"%3E%3C/script%3E'))</script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+{{ end }}
+<div class="mermaid">
+  {{.Inner}}
+</div>

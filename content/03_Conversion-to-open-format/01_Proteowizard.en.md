@@ -5,13 +5,17 @@ weight: 1
 
 ## File conversion using Proteowizard
 
-Download the [Proteowizard software]() and install. Within Proteowizard are two applications:
+Download the [Proteowizard software](https://proteowizard.sourceforge.io/) and install. Within Proteowizard are two applications:
 
-* SeeMS
-* MSConvert
+- SeeMS
+- MSConvert
 
-SeeMS is really useful for viewing chromatograms and spectra when you don't have access to proprietary software like MassLynx. However we are not going to
-use SeeMS directly here (although it's worth having a play and checking your raw spectra).
+SeeMS is really useful for viewing chromatograms and spectra when you don't have access to proprietary software like MassLynx.
 
 ### MSConvert
 
+> :warning: Depending on which type of MS you have used, we will use different settings/ parameters in MSConvert, so click through or use the menu on the left for instructions to complete this step.
+
+We want to convert our .RAW files (which each contain lots of data and metadata about the run in separate files and are BIG). .RAW files are specific to Waters software and will not work with many open source tools. We will convert them to .mzML which is the standard open data format for mass spectrometry[^1]. 
+
+[^1]:**Martens *et al.* (2011).** mzML—a Community Standard for Mass Spectrometry Data. Mol. Cell. Proteomics DOI: https://doi.org/10.1074/mcp.R110.000133 
