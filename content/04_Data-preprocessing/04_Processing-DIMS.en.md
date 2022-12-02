@@ -113,7 +113,7 @@ Instead we have to export separate .csv files and create our own in R.
 To do this, click the "Save" icon in MassUp. Select **"Labelled Aligned Peak List"** from the dropdown menu, then select the double green arrow to choose all your processed and aligned data.
 Define an output directory (where you will save your files) and then click "OK".
 
-{{< figure src="MassUp_save-matched-lists.png" >}}
+{{< figure src="/images/MassUp_save-matched-lists.png" >}}
 
 This will save each concensus spectra's aligned peak list in a separate .csv in quite a frustrating hierarchy of files.
 
