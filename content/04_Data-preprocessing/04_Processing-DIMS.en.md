@@ -43,7 +43,7 @@ Repeat for your other labels until you have your complete data structure (MassUp
 Click “Load” and then when prompted, save your configuration (this saves the labelling, meaning you will be able to load the data more quickly in future).
 After a couple of minutes, you will be able to look at your raw spectra (the three technical reps will be overlaid in the top right panel). Click through the tabs to see each sample.
 
-{{< figure src="/images/" >}}
+{{< figure src="/images/MassUp_raw-data.png" >}}
 
 ---
 
@@ -58,6 +58,8 @@ Use the information in [Gibb & Strimmer 2012](https://doi.org/10.1093/bioinforma
 Tick the box to “Keep original data”
 
 Click “OK”
+
+{{< figure src="/images/MassUp_process_settings.png" >}}
 
 You will now have a peak list for each technical replicate. 
 
@@ -75,6 +77,8 @@ Check the box for “Generate consensus spectrum” (you can alter the POP to 10
 
 Click “OK”
 
+{{< figure src="/images/MassUp_consensus-spectrum_settings.png" >}}
+
 You will now have an “Inter-matched” peak list for each sample, with samples organised into tabs by treatment group (“Label”)
 
 ---
@@ -89,10 +93,13 @@ Select MALDIquant and choose the same tolerance level as above.
 
 Click “OK”.
 
+{{< figure src="/images/MassUp_QC_settings.png" >}}
+
 For more details on the QC, the ? (Help) icon brings up the help/ manual > Operations > The Analysis Menu > Peak List Quality Control
 
 The Replicates QC > Replicates Analysis tab will show a graph with one box per technical replicate and you can compare the percentage of presence of peaks (basically, if there are a few that look very different to the others, you may want to exclude those samples, or at least take it into consideration in your analysis. If there is a lot of variation, you may look into whether there were issues with conversion of the data or with the MS run).
 
+{{< figure src="/images/MassUp_QC_graph.png" >}}
 ---
 
 ### Saving your peak lists
@@ -103,20 +110,13 @@ Sadly in MassUp there is no nice way to export a peak table ([please let me know
 
 Instead we have to export separate .csv files and create our own in R.
 
-To do this, click the "Save" icon in MassUp. Select "Labelled Aligned Peak List" from the dropdown menu, then select the double green arrow to choose all your processed and aligned data.
+To do this, click the "Save" icon in MassUp. Select **"Labelled Aligned Peak List"** from the dropdown menu, then select the double green arrow to choose all your processed and aligned data.
 Define an output directory (where you will save your files) and then click "OK".
 
 {{< figure src="MassUp_save-matched-lists.png" >}}
 
 This will save each concensus spectra's aligned peak list in a separate .csv in quite a frustrating hierarchy of files.
 
-
-
-In file explorer, make a folder called “Untargeted_metabolomics_workflow/MALDI_data” in the same directory as this R code (“05_tidy_data_from_MassUp.R”)
-Select one of your sample’s consensus spectrum tab (double check by looking under the graph - there should only be Spectrum 1)
-Under the graph is a table with “m/z” and “intensity” - at the top right of this table is a tiny icon, click on this > Export to CSV
-File: click on the icon to browse (find “Untargeted_metabolomics_workflow/MALDI_data”) and then enter File Name (use your sample’s filename e.g. “EP-061118-003.csv”)
-Click “Save” and then “OK”
-Repeat for each of your samples until you have a .csv file for each
+Whilst you will be able to access each spectra .csv from file explorer if you so wish, we will have to do some data tidying in the next step to get a neat peak table for analysis.
 
 [^1]: Sebastian Gibb, Korbinian Strimmer, MALDIquant: a versatile R package for the analysis of mass spectrometry data. Bioinformatics 28(17): 2270–2271 DOI: [https://doi.org/10.1093/bioinformatics/bts447](https://doi.org/10.1093/bioinformatics/bts447)
