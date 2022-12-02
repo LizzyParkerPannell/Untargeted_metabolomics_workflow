@@ -56,7 +56,8 @@ Click “Next”.
 Choose the most appropriate Parameters based on the kind of mass spectrometry that was done.
 An example is shown below for an LCMS dataset. 
 
-:book: For more information on choosing your parameters [Forsberg et al. 2018]()[^1] is very helpful. The [IPO package](https://rdrr.io/bioc/IPO/man/IPO-package.html) in R is very useful for gathering information about the data. Usually this is done with a small subset of your data - e.g one file from each group but can be slow and require a lot of computing power.
+> :book: For more information on choosing your parameters [Forsberg et al. 2018](https://doi.org/10.1038/nprot.2017.151) [^1] is very helpful. The [IPO package](https://rdrr.io/bioc/IPO/man/IPO-package.html) in R is very useful for gathering information about the data. 
+Usually this is done with a small subset of your data - e.g one file from each group but can be slow and require a lot of computing power.
 
 {{< figure src="/images/XCMS_select_existing_params.png" >}}
 
@@ -85,4 +86,4 @@ When complete, select the "View Results" tab from the homepage
 > :warning: You can only have one job running at a time (but you can close the website whilst it’s running - it’s working remotely).
 
 
-[^1] Forsberg, E., Huan, T., Rinehart, D. *et al.* (2018). Data processing, multi-omic pathway mapping, and metabolite activity analysis using XCMS Online. Nat Protoc 13, 633–651 DOI: [https://doi.org/10.1038/nprot.2017.151](https://doi.org/10.1038/nprot.2017.151)
+[^1]: Forsberg, E., Huan, T., Rinehart, D. *et al.* (2018). Data processing, multi-omic pathway mapping, and metabolite activity analysis using XCMS Online. Nat Protoc 13, 633–651 DOI: [https://doi.org/10.1038/nprot.2017.151](https://doi.org/10.1038/nprot.2017.151)
