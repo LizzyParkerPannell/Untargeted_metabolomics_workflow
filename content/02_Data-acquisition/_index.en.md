@@ -6,4 +6,7 @@ title: Data acquisition
 weight: 3
 ---
 
-# Data acquisition i.e. Mass spectrometry
+# Data acquisition
+
+(see [01.Metabolite Extraction](https://untargeted-metabolomics-workflow.netlify.app/01_metabolite-extraction/))
+
