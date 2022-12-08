@@ -21,12 +21,11 @@ source("https://raw.githubusercontent.com/LizzyParkerPannell/Untargeted_metabolo
 ---
 ### Load your data and metadata
 
-Now you can load your peak table. 
+Now you can load your peak table. # If you tidied your peak table using [our instructions](https://untargeted-metabolomics-workflow.netlify.app/05_extracting-formatting-peak-table/) you can use this function to get the peak table. 
 
 > :bulb: You need to define MSType as either "XCMS" or "MALDI" (for DI-ESI-MS, use "MALDI").
 
 ```
-# If you tidied your peak table using [our instructions](https://untargeted-metabolomics-workflow.netlify.app/05_extracting-formatting-peak-table/) you can use this function to get the peak table
 peak_table <- get_peak_table(MStype = "XCMS")
 ```
 
@@ -83,9 +82,9 @@ In the above image, you can see the code (left) for both a scores plot (top righ
 ### Run the PERMANOVA model
 
 A PERMANOVA is another type of multivariate analysis and can help corroborate any differences in your PCA model.
-`adonis2` from the `vegan` package is used to run a PERMANOVA
+`adonis2` from the `vegan` package is used to run a PERMANOVA.
 First we have to do some missing value imputation - you can adjust this if you want to but here we just add 1 (so that there are no zero values) to all intensities
-as it is very rare to have an intensity of 1
+as it is very rare to have an intensity of 1.
 
 ```
 impute <- function(x, na.rm=FALSE)(x+1)
@@ -105,7 +104,7 @@ Your result will be saved as a table in the "Tidy_data" folder and displayed in 
 {{<figure src="/images/PERMANOVA.png" >}}
 
 ---
-#### If your groups overlap a lot (do not separate):
+#### If your groups overlap a lot in the PCA:
 
 Check the following:
 - look at scores plots for all combinations of the first 5 PCs
