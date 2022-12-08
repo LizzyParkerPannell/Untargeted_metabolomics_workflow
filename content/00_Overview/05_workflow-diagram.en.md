@@ -5,7 +5,7 @@ mermaid: true
 ---
 The workflow diagram summarises the entire workflow and can help you make decisions about which tools are most relevant to your analysis based on the type of Mass Spectrometry you have used.
 
-The diagram is split into sections which correspond to the stages of the guide (see sidebar menu).
+The diagram is split into sections which correspond to the stages of the guide (see sidebar menu). Click on an element to navigate the guide or use the menu to the left.
 
 {{<mermaid>}}
 graph TD

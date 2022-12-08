@@ -29,7 +29,6 @@ This will code all your KEGG pathways to highlight those that are relevant to yo
 Now, in the box to the left hand side that says “ID search”, paste your list of KEGG IDS and click “Go”. You should get some nodes highlighted red on the KEGG PATHWAY.
 If you hover the cursor over each point, it will tell you the KEGG ID and name - any that are highlighted but are in the greyed out portion of the pathway are unlikely to be produced by your study organism.
 
-You should further cross reference with other metabolite databases to discern whether this is a sensible identification.
 
 **Three red nodes highlighted are likely to be found in this organism, forming part of their global metabolism:**
 
@@ -37,6 +36,7 @@ You should further cross reference with other metabolite databases to discern wh
 
 **Three red nodes highlighted here are NOT likely to be found in this organism, as they do not form part of it's global metabolism map. In this example, they may be kingdom specific:**
 
+> :warning: You should further cross reference with other metabolite databases to discern whether this is a sensible identification.
 {{< figure src="/images/KEGG_check-relevant.png" >}}
 
 ---

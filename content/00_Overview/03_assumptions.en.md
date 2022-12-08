@@ -1,5 +1,6 @@
 ---
-title: Assumptions
+title:
+menuTitle: Assumptions
 weight: 3
 ---
 
@@ -25,5 +26,5 @@ We assume that you have:
 ### Extra assumptions for specific mass spectrometry approaches
 
 * If you wish to analyse LC-MS data, you will need to sign up for an [XCMSonline/ METLIN account](https://xcmsonline.scripps.edu/register.php) and have a working password (this can take a few days to activate so sign up ASAP)
-* We assume that if you have direct injection MS data, it has been run using and autoinjection system (and this is dealt with in the documentation)
+* We assume that if you have direct injection MS data, it has been run using an autoinjection system (and this is dealt with in the documentation)
 

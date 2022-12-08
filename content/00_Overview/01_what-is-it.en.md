@@ -1,6 +1,6 @@
 ---
-title: ""
-menuTitle: "What is it?"
+title: 
+menuTitle: What is it?
 weight: 1
 ---
 

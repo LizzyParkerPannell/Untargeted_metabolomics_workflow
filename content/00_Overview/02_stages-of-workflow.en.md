@@ -1,5 +1,6 @@
 ---
-title: Stages of the workflow
+title: 
+menuTitle: Stages of the workflow
 weight: 2
 ---
 
@@ -20,12 +21,12 @@ The workflow has been divided into stages. We use the following number codes in 
 
 <br>
 
-N.B. Stages 01 and 02 are not covered in great detail in this documentation which focusses more on data processing
+> :warning: Stages 1 and 2 are not covered in great detail in this documentation which focusses more on data processing
 and analysis.
 
 ## Resources and further reading
 
-We can’t cover everything in this guide but there are lots of other useful resources out there. 
+> :bulb: We can’t cover everything in this guide but there are lots of other useful resources out there. 
 Here are some general metabolomics workflow resources you may find useful:
 
 * [Miao Yu’s guide 2021](https://bookdown.org/yufree/Metabolomics/) (particularly useful as links to a lot of literature and other tools that we have not covered here) 
