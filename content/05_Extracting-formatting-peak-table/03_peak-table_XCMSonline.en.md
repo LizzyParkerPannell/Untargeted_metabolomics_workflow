@@ -12,7 +12,7 @@ same name that contains a range of data and outputs.
 Next make sure you have 
 - a folder in your working directory (where your R project is located) called **"Tidy_data"**
 - a folder in the same working directory (where your R project is located) called **"Data"** that contains your downloaded xcms results
-- moved your unzipped folder from the XCMSonline download into this **Data** folder
+- moved your unzipped folder from the XCMSonline download into this **"Data"** folder
 - renamed the unzipped folder with a meaningful name (name of experiment, pos, MS type etc) if necessary. Use hyphens or underscores instead of spaces and non-alphanumeric characters
 
 See the left side of the image below with highlighted files. 
