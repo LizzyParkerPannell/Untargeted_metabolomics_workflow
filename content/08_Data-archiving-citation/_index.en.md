@@ -6,4 +6,4 @@ title: Data archiving and reporting
 weight: 9
 ---
 
-# Data archiving and reporting the workflow
+# Data archiving and Citation

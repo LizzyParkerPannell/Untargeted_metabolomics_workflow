@@ -3,7 +3,7 @@ title: MetaboLights
 weight: 2
 ---
 
-[MetaboLights](https://www.ebi.ac.uk/metabolights/) is a data repository specific to metabolomics studies. You can submit data from NMR, GC-MS, LC-MS, and MALDI amongst others.
+[MetaboLights](https://www.ebi.ac.uk/metabolights/) is a data repository specific to metabolomics studies [^1]. You can submit data from NMR, GC-MS, LC-MS, and MALDI amongst others.
 
 The repository is maintained and curated by the European Bioinformatics Institure (EMBL-EBI) meaning that the data it holds is well-formatted and 
 integrated with a number of other standardized databases and ontologies (ways of describing methods, data and metadata). This "future-proofs" the data
@@ -45,5 +45,6 @@ columns of the "Assays" table.
 
 - If you get stuck, email metabolights-help@ebi.ac.uk and someone will respond to you (be nice, they're real people!).
 
-
+[^1]: Kenneth Haug, Keeva Cochrane, Venkata Chandrasekhar Nainala, Mark Williams, Jiakang Chang, Kalai Vanii Jayaseelan, Claire O’Donovan (2020). MetaboLights: a resource evolving in 
+response to the needs of its scientific community. Nucleic Acids Research 48(D1):D440–D444 https://doi.org/10.1093/nar/gkz1019
 
