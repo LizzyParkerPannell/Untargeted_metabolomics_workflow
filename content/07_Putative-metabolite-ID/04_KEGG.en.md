@@ -22,13 +22,14 @@ Once you have a list of your putative IDs from METLIN, cross reference these wit
 Open KEGG PATHWAY > Change Pathway Type > Use Ctrl + F and enter the name of your organism > click on the three letter code to the left of your organism
 This will code all your KEGG pathways to highlight those that are relevant to your organism.
 
-> Note - if there is not a map for your particular organism it is worth doing more investigation into your potential identification to see what kind of compound it is and whether that might feasibly be present in your organism.
+> :bulb: If there is not a map for your particular organism it is worth doing more investigation into your potential identification to see what kind of compound it is and whether that might feasibly be present in your organism.
 
 {{< figure src="/images/KEGGpathway.png" >}} {{< figure src="/images/KEGG_changepathwaytype.png" >}}
 
 Now, in the box to the left hand side that says “ID search”, paste your list of KEGG IDS and click “Go”. You should get some nodes highlighted red on the KEGG PATHWAY.
 If you hover the cursor over each point, it will tell you the KEGG ID and name - any that are highlighted but are in the greyed out portion of the pathway are unlikely to be produced by your study organism.
 
+> :warning: You should further cross reference with other metabolite databases to discern whether this is a sensible identification.
 
 **Three red nodes highlighted are likely to be found in this organism, forming part of their global metabolism:**
 
@@ -36,7 +37,6 @@ If you hover the cursor over each point, it will tell you the KEGG ID and name -
 
 **Three red nodes highlighted here are NOT likely to be found in this organism, as they do not form part of it's global metabolism map. In this example, they may be kingdom specific:**
 
-> :warning: You should further cross reference with other metabolite databases to discern whether this is a sensible identification.
 {{< figure src="/images/KEGG_check-relevant.png" >}}
 
 ---
