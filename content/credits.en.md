@@ -5,7 +5,7 @@ weight: 5
 ---
 
 ### Contribution credits
-Elizabeth Parker^1❋^, Kathryn Billane^2❋^, James Pitman^3^, David Hopkins^5^, Alex Williams^5^, Heather Walker^4^ Duncan Cameron^6^ (2022).
+Elizabeth Parker [1❋], Kathryn Billane [2❋], James Pitman [3], David Hopkins [5], Alex Williams [5], Heather Walker [4] Duncan Cameron [6] (2022).
 
 ❋ EP and KB are grateful to the University of Sheffield for “Unleash your data and software funding” that facilitated documentation of this workflow
 

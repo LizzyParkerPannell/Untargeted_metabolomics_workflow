@@ -24,5 +24,5 @@ Much better to use a field-specific repository where your data will be with lots
 to formatting your data in an appropriate way allowing it to form part of a larger data set of metabolite information. Some journals will have specific guidelines on which repository
 to use.
 
-> :clock: Set aside time at the start of your project for submitting your data to a repository. It's not optional!
+> :alarm_clock: Set aside time at the start of your project for submitting your data to a repository. It's not optional!
 

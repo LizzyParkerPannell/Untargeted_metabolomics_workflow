@@ -5,7 +5,7 @@ weight: 2
 
 [Metaboanalyst](https://new.metaboanalyst.ca/MetaboAnalyst/) is an online platform on which you can load, normalize, analyse and visualise your untargeted metabolomics data. Be careful though - there is a strong emphasis on detailed stats that are more appropriate for targeted analyses.
 
-> Metaboanalyst is interoperable with R - you can access the code with the button at the top left of the Results page
+> :bulb: Metaboanalyst is interoperable with R - you can access the code with the button at the top left of the Results page
 
 We will not provide a lot of details here because the [tutorials and documentation for Metaboanalyst](https://www.metaboanalyst.ca/MetaboAnalyst/docs/Tutorials.xhtml) are very good.
 
@@ -19,4 +19,4 @@ If your experiment included multiple treatments (or variables), batch informatio
 - `"Untargeted_metabolomics_workflow\Tidy_data\MALDI_metadata_for_metaboanalyst.csv"` or `"Untargeted_metabolomics_workflow\Tidy_data\XCMS_metadata_for_metaboanalyst.csv"`
 
 On the upload page, make sure to select "Peak Intensities", "Samples in rows" and to add the relevant .csv files.
-{{< figure src="/images/06_Metaboanalyst_upload_screenshot.png" >}}
+{{< figure src="/images/metaboanalyst.png" >}}
