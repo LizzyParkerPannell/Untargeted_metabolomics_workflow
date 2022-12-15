@@ -4,7 +4,7 @@ menuTitle: What is it?
 weight: 1
 ---
 
-## What is untargeted metabolomics, James?
+## What is untargeted metabolomics?
 
 You can find out more about metabolomics in general via this [introductory course provided by EMBI](https://www.ebi.ac.uk/training/online/courses/metabolomics-introduction/).
 
