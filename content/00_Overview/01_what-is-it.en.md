@@ -16,4 +16,4 @@ Untargeted metabolomics produces huge quantities of (sometimes three dimensional
 
 > :question: Which compounds might be responsible for the difference in metabolomic fingerprint between the classes (groups) of samples?
 
-You will not get a definitively quantitative difference or unquestionable compound identification from this workflow. You will get a good idea of which compounds are a good bet for further study.
+> :warning: **You will not get a definitively quantitative difference or unquestionable compound identification from this workflow. You will get a good idea of which compounds are a good bet for further study.**
