@@ -5,7 +5,8 @@
 
 
 # auto install packages
-RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "muma", "forcats", "vegan")
+RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", # we are currently having some issues with versions of this package "muma", 
+                      "forcats", "vegan")
   for (i in RequiredPackages) { #Installs packages if not yet installed
   if (!require(i, character.only = TRUE)) install.packages(i)
   }
