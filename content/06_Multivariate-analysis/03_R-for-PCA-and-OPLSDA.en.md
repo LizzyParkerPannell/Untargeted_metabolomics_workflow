@@ -13,7 +13,10 @@ You will need your peak table in a specific format:
 ---
 ### Load everything you will need into R
 
-Firstly load all the libraries and functions that you will need by copying this code into R and running it:
+> :warning: you will need to manually install the following packages using `install.packages()` or RStudio
+> `"tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "forcats", "vegan"`
+
+Then load all the libraries and functions that you will need by copying this code into R and running it:
 
 ```
 source("https://raw.githubusercontent.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/main/00_workflow_functions.R")
