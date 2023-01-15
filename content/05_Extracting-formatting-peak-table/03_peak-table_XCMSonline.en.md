@@ -25,7 +25,10 @@ See the left side of the image below with highlighted files.
 The first thing we need to do in R is import all the libraries and functions we will need to run the code. I have put it all into one source code for the whole workflow to save space
 and avoid confusion for people who don't like looking at code!
 
-Copy and paste this code into R and run.
+> :warning: you will need to manually install the following packages using `install.packages()` or RStudio
+> `"tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "forcats", "vegan"`
+
+Then copy and paste this code into R and run:
 
 ```
 source("https://raw.githubusercontent.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/main/00_workflow_functions.R")
