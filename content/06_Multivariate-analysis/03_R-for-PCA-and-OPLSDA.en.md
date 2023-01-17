@@ -2,7 +2,7 @@
 title: R for Multivariate analysis
 weight: 3
 ---
-
+ 
 > Alternatively see the code at [Github](https://github.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/blob/e6fc5ff3ac5a9e4871b035d9036ddce1a5882eb3/06_undirected_directed_analysis.R)
 
 You will need your peak table in a specific format:
