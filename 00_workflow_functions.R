@@ -46,7 +46,7 @@ tidy_MALDI_peak_table <- function(file_path){
   for (x in 1:length(files_from_Massup$directories)){
     
     a <- tibble(Filename = paste(file_path, files_from_Massup$directories[x], (list.files(paste(file_path, files_from_Massup$directories[x], sep="/"))), sep = "/")) %>%
-      mutate(Filename = paste(Filename, "/spectrum1.csv", sep = ""))
+      mutate(Filename = paste(Filename, "", sep = "")) #Probably can have it as mutate(Filename = Filename)
     
     files_to_import <- files_to_import %>%
       full_join(a) %>%
@@ -132,12 +132,12 @@ tidy_MALDI_peak_table <- function(file_path){
     rename("Sample" = Filetext)
   
   
-  write_csv(data_for_SIMCA, "Tidy_data/Massup_Data_for_SIMCA.csv")
-  write_csv(data_for_metaboanalyst_1, "Tidy_data/Massup_Data_for_metaboanalyst_1factor.csv")
-  write_csv(data_for_metaboanalyst_2, "Tidy_data/Massup_Data_for_metaboanalyst_2factor.csv")
-  write_csv(metadata_for_metabolanalyst2, "Tidy_data/Massup_metadata_for_metaboanalyst.csv")
+  write_csv(data_for_SIMCA, "Massup_Data_for_SIMCA.csv") #Removed /Tidy_data/
+  write_csv(data_for_metaboanalyst_1, "Massup_Data_for_metaboanalyst_1factor.csv") #Removed /Tidy_data/
+  write_csv(data_for_metaboanalyst_2, "Massup_Data_for_metaboanalyst_2factor.csv") #Removed /Tidy_data/
+  write_csv(metadata_for_metabolanalyst2, "Massup_metadata_for_metaboanalyst.csv") #Removed /Tidy_data/
   
-  return(paste("MALDI peak tables suitable for SIMCA + metaboanalyst saved to Tidy_data/MALDI_Data_for_SIMCA.csv"))
+  return(paste("MALDI peak tables suitable for SIMCA + metaboanalyst saved to MALDI_Data_for_SIMCA.csv")) #Removed /Tidy_data/
   
 }
 
