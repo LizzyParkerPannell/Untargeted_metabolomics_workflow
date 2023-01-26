@@ -117,19 +117,19 @@ tidy_MALDI_peak_table <- function(file_path){
   
   data_for_metaboanalyst_1 <- tidy_data %>%
     left_join(metadata) %>%
-    rename("Sample" = Filetext) %>%
+    rename("Sample" = Filetext) %>%   #should be File name?? 
     select(Sample, treat_names$treats[1], any_of(as.character(peak_table$mz))) %>%
     mutate(Sample = str_replace_all(Sample, " ", "_"))
   
   data_for_metaboanalyst_2 <- tidy_data %>%
     left_join(metadata) %>%
-    rename("Sample" = Filetext) %>%
+    rename("Sample" = Filetext) %>% # Should be filename??
     select(Sample, any_of(as.character(peak_table$mz))) %>%
     mutate(Sample = str_replace_all(Sample, " ", "_"))
   
-  metadata_for_metabolanalyst2 <- metadata %>%
-    select(-Filename) %>%
-    rename("Sample" = Filetext)
+  metadata_for_metabolanalyst2 <- metadata %>% 
+    select(-Filename) %>%   # should be Filetext?? 
+    rename("Sample" = Filetext) # Should be Filename 
   
   
   write_csv(data_for_SIMCA, "Massup_Data_for_SIMCA.csv") #Removed /Tidy_data/
