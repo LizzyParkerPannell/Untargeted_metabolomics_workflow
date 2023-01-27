@@ -7,29 +7,6 @@
 # auto install packages
 RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "forcats", "vegan")
 
-### we are currently hitting lots of bugs with auto-installing packages so have reverted to instructing people to manually install packages on the website
-#for (i in RequiredPackages) { #Installs packages if not yet installed
-#  if (!require(i, character.only = TRUE)) install.packages(i)
-#  }
-
-# PACKAGES AND CITATIONS
-
-  # Load required packages
-  lapply(RequiredPackages, require, character.only = TRUE)  
-  
-  # Don't forget to cite these packages in your thesis/ manuscript (this code will automatically make a table of text citations for you)
-  cite_packages <- tibble(Package = "1", Citation = "1")
-  for (i in 1:length(RequiredPackages)){
-    j <- RequiredPackages[i]
-    
-    k <- citation(j)$textVersion
-    
-    cite_packages[i, 1] <- j
-    cite_packages[i, 2] <- k
-    
-  }
-  
-  cite_packages
 
 # TIDY DATA FROM MASSUP (MALDI AND DIMS)
 
