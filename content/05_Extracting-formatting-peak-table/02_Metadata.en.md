@@ -16,7 +16,7 @@ More metadata is required for submitting to a repository but we will cover that 
 You need to create two `.csv` files (you can do this in excel, R, google sheets, whatever you like) as long as the order and headings of the columns are as follows:
 
 For you `samplelist.csv` you need the following columns which can be obtained from your `MassLynx Sample List`:
-1. **"Filename"** : this is a list of the filenames of your mzml files (the part before the `.mzml`)
+1. **"Filename"** : this is the label you have assigned to each biological sample in MassUP.
 2. **"Filetext"** : this is the name you have manually added to the metadata of that sample in MassLynx[^1]
 3. **"MSFile"** or an equivalent column that contains either "pos" or "neg" within it
 Any other columns will be ignored in this file
@@ -30,7 +30,7 @@ For your `treatments.csv` you need at least two columns (but can have as many as
 
 {{< figure src="/images/treatments.png" >}}
 
-Keep these in a file with your `.mzml` data
+Keep these in a folder with all of the individual output folders from MassUp, as well as your R project, R script, and a folder called Tidy_data. These should be the only files in this folder aside from possibly an Rhistory file. An example of how these should be layed out is shown below.
 
 [^1]: You can find this at `$$ SampleID:` in the `_HEADER.txt` file of the original `.RAW` folder if you need to
 
