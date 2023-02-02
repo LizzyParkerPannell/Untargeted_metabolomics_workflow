@@ -127,7 +127,7 @@ tidy_MALDI_peak_table <- function(file_path){
   data_for_metaboanalyst_2 <- Tidy_data %>%
     left_join(metadata) %>%
     rename("Sample" = Filetext) %>%
-    select(Sample, any_of(as.character(peak_table$mmz))) %>%
+    select(Sample, treat_names$treats[2], any_of(as.character(peak_table$mmz))) %>%
     mutate(Sample = str_replace_all(Sample, " ", "_"))
   
   metadata_for_metabolanalyst2 <- metadata %>%
