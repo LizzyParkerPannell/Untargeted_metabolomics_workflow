@@ -27,6 +27,11 @@ Then run the following code, inserting the file path of the folder that you save
 ```
 tidy_MALDI_peak_table("")
 ```
+For example,
+
+```
+tidy_MALDI_peak_table("C:/Users/xxxxxxxx/Desktop/test_for_MALDI_data")
+```
 
 R will run the function for you, gathering the .csv files from each of your spectra and compiling them into one table. It will then format that table for different
 possible downstream uses and add metadata where appropriate for the different tools. The output files are highlighted on the right in the image below (you will need to check file explorer to see that they have been created).
