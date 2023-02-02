@@ -6,7 +6,7 @@ tags: ["MALDI"]
 
 ## Pre-processing MALDI data with MassUp
 
-[MassUp](http://sing-group.org/mass-up/index.php) is open-source software that provides a GUI for processing MALDI-ToF data (or other 2D MS data like our DI-ESI-MS data). It utilises the [MALDIquant]() algorithms but does not require knowledge of R. It also has some nice visualisations (but is a bit old-school to look at. You probably wouldn’t want to use it to make your figures). Here we just use it for quick processing of the data and a bit of quality control.
+[MassUp](http://sing-group.org/mass-up/index.php) is open-source software that provides a GUI for processing MALDI-ToF data (or other 2D MS data like our DI-ESI-MS data). It utilises the [MALDIquant](https://cran.microsoft.com/web/packages/MALDIquant/vignettes/MALDIquant-intro.pdf) algorithms but does not require knowledge of R. It also has some nice visualisations (but is a bit old-school to look at. You probably wouldn’t want to use it to make your figures). Here we just use it for quick processing of the data and a bit of quality control.
 
 You may need different parameters but these should be optimised for any experiment anayway.
 
