@@ -2,21 +2,18 @@
 title: R for Multivariate analysis
 weight: 3
 ---
- 
+
 > Alternatively see the code at [Github](https://github.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/blob/e6fc5ff3ac5a9e4871b035d9036ddce1a5882eb3/06_undirected_directed_analysis.R)
 
 You will need your peak table in a specific format:
 
 - if you have tidied your data using [05_tidy_data_from_MassUp](https://github.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/blob/e6fc5ff3ac5a9e4871b035d9036ddce1a5882eb3/05_tidy_data_from_MassUp.R) or [XCMS](https://github.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/blob/e6fc5ff3ac5a9e4871b035d9036ddce1a5882eb3/05_tidy_data_from_XCMS-online.R), then you should already have the files you need in `"Untargeted_metabolomics_workflow\Tidy_data"`
 - Otherwise you will need a pre-processed peak intensity table saved as a .csv with features (m/z or m/z__RT or m/z bins) as columns and samples as rows in a column called "Sample". Then you will need either your treatments (classes/ grouping information) in columns following the first column ("Sample") **OR** you will need a metadata file with "Sample" as the first column followed by you treatments (classes/ grouping information) in separate columns
- 
+
 ---
 ### Load everything you will need into R
 
-> :warning: you will need to manually install the following packages using `install.packages()` or RStudio
-> `"tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "forcats", "vegan"`
-
-Then load all the libraries and functions that you will need by copying this code into R and running it:
+Firstly load all the libraries and functions that you will need by copying this code into R and running it:
 
 ```
 source("https://raw.githubusercontent.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/main/00_workflow_functions.R")
