@@ -22,7 +22,7 @@ RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2",
   for (i in 1:length(RequiredPackages)){
     j <- RequiredPackages[i]
     
-    k <- citation(j)$textVersion
+    k <- format(citation(j), style = "text")
     
     cite_packages[i, 1] <- j
     cite_packages[i, 2] <- k
@@ -39,14 +39,17 @@ tidy_MALDI_peak_table <- function(file_path){
   # get list of files to import
   files_from_Massup <- data.frame(directories = list.files(file_path)) %>%
     filter(directories != "treatments.csv") %>%
-    filter(directories != "samplelist.csv")
+    filter(directories != "samplelist.csv") %>% 
+    filter(directories != "tidy_data") %>% 
+    filter(directories != list.files(file_path, pattern = "\\.Rproj$")) %>% 
+    filter(directories != list.files(file_path, pattern =  "\\.R$"))
   
   files_to_import <- tibble(Filename = "")
   
   for (x in 1:length(files_from_Massup$directories)){
     
     a <- tibble(Filename = paste(file_path, files_from_Massup$directories[x], (list.files(paste(file_path, files_from_Massup$directories[x], sep="/"))), sep = "/")) %>%
-      mutate(Filename = paste(Filename, "/spectrum1.csv", sep = ""))
+      mutate(Filename = paste(Filename))
     
     files_to_import <- files_to_import %>%
       full_join(a) %>%
@@ -56,14 +59,14 @@ tidy_MALDI_peak_table <- function(file_path){
   }
   
   
-  peak_table <- tibble(mz = 0.1)
+  peak_table <- tibble(mmz = 0.1)
   
   for(i in 1:length(files_to_import$Filename)){
     
     old_table <- peak_table
     
     a <- read.csv(files_to_import$Filename[i], sep = ",") %>%
-      rename("mz" = 1)
+      rename("mmz" = 1)
     
     colnames(a)[2] <- files_to_import$Filename[i]
     
@@ -78,11 +81,11 @@ tidy_MALDI_peak_table <- function(file_path){
   file_names <- tibble(Filename = colnames(peak_table)) %>%
     transmute(Filename = str_replace(Filename, file_path, "")) %>%
     transmute(Filename = str_replace(Filename, ".csv", "")) %>%
-    transmute(Filename = str_replace(Filename, "/spectrum1", "")) %>%
-    transmute(Filename = str_replace(Filename, "/\\s*(.*?)\\s*/", "")) ### need to remove stuff between / to get it down to just sample name and not path
+    transmute(Filename = str_replace(Filename, "/spectrum1", "")) %>% 
+    transmute(Filename = str_replace(Filename, Filename, substr(Filename, 2,nchar(Filename))))
   
-  tidy_data <- peak_table %>%
-    filter(mz != 0.1)
+  Tidy_data <- peak_table %>%
+    filter(mmz != 0.1)
   
   colnames(tidy_data) <- file_names$Filename
   
@@ -97,34 +100,34 @@ tidy_MALDI_peak_table <- function(file_path){
   sample_list <- read.csv(paste(file_path, "/samplelist.csv", sep=""))
   
   temp <- as_tibble(t(peak_table))
-  colnames(temp) <- as.character(peak_table$mz)
-  tidy_data <- temp %>%
+  colnames(temp) <- as.character(peak_table$mmz)
+  Tidy_data <- temp %>%
     filter(is.na(`0.1`)) %>%
     select(-`0.1`) %>%
     add_column((file_names %>% filter(Filename != "mz")), .before = TRUE)
   
-  metadata <- tidy_data %>% select(Filename) %>%
+  metadata <- Tidy_data %>% select(Filename) %>%
     left_join(sample_list) %>% 
     left_join(treatments) %>%
     select(Filename, Filetext, treat_names$treats) %>%
     distinct()
   
-  data_for_SIMCA <- tidy_data %>%
+  data_for_SIMCA <- Tidy_data %>%
     left_join(metadata) %>%
     rename("Sample" = Filetext) %>%
-    select(Sample, treat_names$treats, any_of(as.character(peak_table$mz))) %>%
+    select(Sample, treat_names$treats, any_of(as.character(peak_table$mmz))) %>%
     mutate(Sample = str_replace_all(Sample, " ", "_"))
   
-  data_for_metaboanalyst_1 <- tidy_data %>%
+  data_for_metaboanalyst_1 <- Tidy_data %>%
     left_join(metadata) %>%
     rename("Sample" = Filetext) %>%
-    select(Sample, treat_names$treats[1], any_of(as.character(peak_table$mz))) %>%
+    select(Sample, treat_names$treats[1], any_of(as.character(peak_table$mmz))) %>%
     mutate(Sample = str_replace_all(Sample, " ", "_"))
   
-  data_for_metaboanalyst_2 <- tidy_data %>%
+  data_for_metaboanalyst_2 <- Tidy_data %>%
     left_join(metadata) %>%
     rename("Sample" = Filetext) %>%
-    select(Sample, any_of(as.character(peak_table$mz))) %>%
+    select(Sample, any_of(as.character(peak_table$mmz))) %>%
     mutate(Sample = str_replace_all(Sample, " ", "_"))
   
   metadata_for_metabolanalyst2 <- metadata %>%
