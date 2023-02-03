@@ -29,7 +29,7 @@ RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2",
     
   }
   
-  cite_packages
+  print(cite_packages)
 
 # TIDY DATA FROM MASSUP (MALDI AND DIMS)
 
@@ -40,7 +40,7 @@ tidy_MALDI_peak_table <- function(file_path){
   files_from_Massup <- data.frame(directories = list.files(file_path)) %>%
     filter(directories != "treatments.csv") %>%
     filter(directories != "samplelist.csv") %>% 
-    filter(directories != "tidy_data") %>% 
+    filter(directories != "Tidy_data") %>% 
     filter(directories != list.files(file_path, pattern = "\\.Rproj$")) %>% 
     filter(directories != list.files(file_path, pattern =  "\\.R$"))
   
@@ -87,7 +87,7 @@ tidy_MALDI_peak_table <- function(file_path){
   Tidy_data <- peak_table %>%
     filter(mmz != 0.1)
   
-  colnames(tidy_data) <- file_names$Filename
+  colnames(Tidy_data) <- file_names$Filename
   
   #import treatment list
   treatments <- read.csv(paste(file_path,"/treatments.csv", sep="")) %>%
