@@ -5,7 +5,7 @@
 
 
 # auto install packages
-RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "Bioconductor", "pcaMethods", "forcats", "vegan")
+RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "BioManager", "pcaMethods", "forcats", "vegan")
 
 ### we are currently hitting lots of bugs with auto-installing packages so have reverted to instructing people to manually install packages on the website
 #for (i in RequiredPackages) { #Installs packages if not yet installed
