@@ -10,7 +10,7 @@ The first thing we need to do is import all the libraries and functions we will 
 and avoid confusion for people who don't like looking at code!
 
 > :warning: you will need to manually install the following packages using `install.packages()` or RStudio
-> `"tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "Bioconductor", "pcaMethods", "forcats", "vegan"`
+> `"tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "BiocManager", "pcaMethods", "forcats", "vegan"`
 
 Then copy and paste this code into R and run:
 
