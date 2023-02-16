@@ -5,7 +5,7 @@
 
 
 # auto install packages
-RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "pcaMethods", "forcats", "vegan","devtools")
+RequiredPackages <- c("devtools","dplyr","forcats","ggplot2","pcaMethods","readr", "stringr","tibble","tidyr","vegan")
 
 
 # TIDY DATA FROM MASSUP (MALDI AND DIMS)
