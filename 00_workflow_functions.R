@@ -3,33 +3,7 @@
 # Prep, libraries and functions for untargeted metabolomics workflow
 # See https://untargeted-metabolomics-workflow.netlify.app/ for guidance
 
-
-# auto install packages
-RequiredPackages <- c("tidyr", "tibble", "dplyr", "readr", "stringr", "ggplot2", "BiocManager", "pcaMethods", "forcats", "vegan")
-
-### we are currently hitting lots of bugs with auto-installing packages so have reverted to instructing people to manually install packages on the website
-#for (i in RequiredPackages) { #Installs packages if not yet installed
-#  if (!require(i, character.only = TRUE)) install.packages(i)
-#  }
-
-# PACKAGES AND CITATIONS
-
-  # Load required packages
-  lapply(RequiredPackages, require, character.only = TRUE)  
-  
-  # Don't forget to cite these packages in your thesis/ manuscript (this code will automatically make a table of text citations for you)
-  cite_packages <- tibble(Package = "1", Citation = "1")
-  for (i in 1:length(RequiredPackages)){
-    j <- RequiredPackages[i]
-    
-    k <- format(citation(j), style = "text")
-    
-    cite_packages[i, 1] <- j
-    cite_packages[i, 2] <- k
-    
-  }
-  
-  print(cite_packages)
+RequiredPackages <- c("devtools","dplyr","forcats","ggplot2","pcaMethods","readr", "stringr","tibble","tidyr","vegan", "BiocManager")
 
 # TIDY DATA FROM MASSUP (MALDI AND DIMS)
 
@@ -131,8 +105,8 @@ tidy_MALDI_peak_table <- function(file_path){
     mutate(Sample = str_replace_all(Sample, " ", "_"))
   
   metadata_for_metabolanalyst2 <- metadata %>%
-    select(-Filename) %>%
-    rename("Sample" = Filetext)
+    select(-Filetext) %>%
+    rename("Sample" = Filename)
   
   
   write_csv(data_for_SIMCA, "Tidy_data/Massup_Data_for_SIMCA.csv")

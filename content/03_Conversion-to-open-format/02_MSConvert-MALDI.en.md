@@ -17,7 +17,7 @@ Output Directory: Specify an output folder using “Browse”
 {{< figure src="/images/MALDI_convert_destination.png" >}}
 
 Options: Output File > mzML
-Filters: select "subset" (from drop-down menu) > "scanEvent" = 1-1 and select “polarity = positive” or "polarity = negative" depending on your MS run (and click “add”)
+Filters: select "subset" (from drop-down menu) > "scanNumber" = 2-119 (we want to remove the first scan, use SeeMS to check the number of the last scan and adjust this value), and select “polarity = positive” or "polarity = negative" depending on your MS run (and click “add”)
 {{< figure src="/images/MALDI_convert_options.png" >}}
 
 Select "Start" (bottom right)
