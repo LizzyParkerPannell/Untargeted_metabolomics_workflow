@@ -71,9 +71,13 @@ To make consensus spectra (one per biological sample) click on the icon with two
 
 Again click on the double green arrow to select both treatment groups (“Labels”).
 
+For "Intra-matching":
 Select MALDIquant and choose a tolerance level.
 
 Check the box for “Generate consensus spectrum” (you can alter the POP to 100% if you want peaks to be present in all of your technical reps to be considered a peak). Use 50% if any of your technical reps didn’t run properly.
+
+For "Inter-matching":
+Select "forward" and choose a tolerance level.
 
 Click “OK”
 
