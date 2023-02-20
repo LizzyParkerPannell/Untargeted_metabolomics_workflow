@@ -49,7 +49,7 @@ url = "https://creativecommons.org/licenses/by/4.0/"
 weight = 40
 
 [params]
-  editURL = "https://github.com/LizzyParkerPannell/Untargeted_metabolomics_workflow/edit/master/content/"
+  editURL = false
   description = "Workflow for processing and analysis of MALDI, DI-MS, LC-MS data using open source tools and software"
   author = "Elizabeth Parker"
   showVisitedLinks = true
