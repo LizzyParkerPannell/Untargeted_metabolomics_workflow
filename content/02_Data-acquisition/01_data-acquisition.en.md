@@ -13,6 +13,7 @@ use in our facility and want to support users to process their data. GC-MS is al
 are available ***
 
 |**MALDI**|**DI-ESI-MS**|**LC-ESI-MS**|**GC-ESI-MS**|
+|---|---|---|---|
 |Fast|Fast|||
 |Minimal fragmentation|||
 |Good for non-polar metabolites|Good for low m/z compounds|Better coverage of secondary metabolites|Targets non-polar and volatile metabolites|
