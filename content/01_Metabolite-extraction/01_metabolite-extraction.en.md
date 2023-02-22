@@ -3,8 +3,6 @@ title: Metabolite extraction
 weight: 1
 ---
 
-## Metabolite Extraction and Data acquisition
-
 {{< figure src="/images/metabolite_extraction.png" >}}
 
 We will not go into the details of quenching, metabolite extraction or choice of mass spectrometry platform here 
