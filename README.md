@@ -1,6 +1,6 @@
 # Untargeted Metabolomics Workflow
 
-Code in this repository can help with processing untargeted metabolomics of e.g. plant secondary metabolites or E.coli metabolites. The workflow can be found ... (put link here) ... and relies on existing open source tools including [XCMSonline](https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage) (for LCMS data), an [in-house macro]() from Overy *et al.* 2005 (for MALDI or DI-MS data), [MassUp](https://www.sing-group.org/mass-up/quickstart) or [MALDIquant](https://strimmerlab.github.io/software/maldiquant/) (for MALDI data).
+Code in this repository can help with processing untargeted metabolomics of e.g. plant secondary metabolites or E.coli metabolites. The [workflow](https://untargeted-metabolomics-workflow.netlify.app/00_overview/05_workflow-diagram/) relies on existing open source tools including [XCMSonline](https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage) (for LCMS data), an [in-house macro]() from Overy *et al.* 2005 (for MALDI or DI-MS data), [MassUp](https://www.sing-group.org/mass-up/quickstart) or [MALDIquant](https://strimmerlab.github.io/software/maldiquant/) (for MALDI data).
 
 The code can prepare a peak intensity table which is suitable for undirected (PCA) and directed (OPLS-DA) analysis using Metabolanalyst, R or SIMCA-P+ (proprietary).
 
