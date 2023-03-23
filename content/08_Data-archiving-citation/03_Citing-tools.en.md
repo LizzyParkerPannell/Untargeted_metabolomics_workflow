@@ -20,5 +20,5 @@ Below is a handy ticklist of tools we have used in the workflow. Please make sur
 - Write a data availability statement in any publication that links to your archived data in [MetaboLights](https://www.ebi.ac.uk/metabolights/)
 
 To cite this workflow:
-> Parker, Ε.J.; Billane, K.C.; Austen, N.; Cotton, A.; George, R.M.; Hopkins, D.; Lake, J.A.; Pitman, J.K.; Prout, J.N.; Walker, H.J.; Williams, A.; Cameron, D.D. Untangling the Complexities of Processing and Analysis for Untargeted LC-MS Data Using Open-source Tools. Preprints 2023, 2023020056 doi: [10.20944/preprints202302.0056.v1](https://www.preprints.org/manuscript/202302.0056/v1).
+> Parker, Ε.J.; Billane, K.C.; Austen, N.; Cotton, A.; George, R.M.; Hopkins, D.; Lake, J.A.; Pitman, J.K.; Prout, J.N.; Walker, H.J.; Williams, A.; Cameron, D.D. Untangling the Complexities of Processing and Analysis for Untargeted LC-MS Data Using Open-source Tools. Metabolites 2023, 13(4), 463; https://doi.org/10.3390/metabo13040463
 
